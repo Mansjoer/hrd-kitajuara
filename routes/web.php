@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,10 @@ Route::controller(EmployeeController::class)->group(function () {
     Route::get('/employees/edit/{slug}', 'edit')->name('app-employees-edit');
     Route::post('/employees/update/{slug}', 'update')->name('app-employees-update');
     Route::post('/employees/delete', 'delete')->name('app-employees-delete');
+});
+
+Route::controller(ProfileController::class)->group(function () {
+    Route::get('/users/{slug}/profile', 'profile')->name('app-users-profile');
 });
 
 Route::controller(Controller::class)->group(function () {

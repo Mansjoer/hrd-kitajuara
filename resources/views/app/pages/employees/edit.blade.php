@@ -156,7 +156,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label class="form-label">Nomor Bank</label>
+                                        <label class="form-label">Nomor Rekening</label>
                                         <input type="text" class="form-control" name="bank_number" value="{{ $user->employee->bank_number }}" />
                                     </div>
                                 </div>

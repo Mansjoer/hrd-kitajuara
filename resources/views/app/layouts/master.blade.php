@@ -67,11 +67,13 @@
         @endif
         <div class="page-wrapper">
             @hasSection('breadcumb')
-                <div class="page-header d-print-none">
-                    <div class="container-xl">
-                        @yield('breadcumb')
+                @if (Auth::check())
+                    <div class="page-header d-print-none">
+                        <div class="container-xl">
+                            @yield('breadcumb')
+                        </div>
                     </div>
-                </div>
+                @endif
             @else
             @endif
             <!-- Page body -->
