@@ -28,7 +28,11 @@ class EmployeeController extends Controller
                 ->orWhere('departements.name', 'LIKE', "%" . $request->cari . "%")
                 ->get();
         } else {
-            $employees = Employee::orderBy('nik')->paginate(10);
+            $employees = Employee::join('users', 'employees.user_id', '=', 'users.id')
+                ->join('branches', 'employees.branch_id', '=', 'branches.id')
+                ->join('departements', 'employees.division_id', '=', 'departements.id')
+                ->join('positions', 'employees.position_id', '=', 'positions.id')->paginate(10);
+            // dd($employees);
             $data = '';
         }
         return view('app.pages.employees.index', compact('employees', 'data'));

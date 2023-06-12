@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
+use Akuechler\Geoly;
 use App\Models\Employee;
-use Malhal\Geographical\Geographical;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Branch extends Model
 {
-    use HasFactory, Geographical;
+    use HasFactory, Geoly;
 
     protected $guarded = [];
 

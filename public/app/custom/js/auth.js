@@ -1,6 +1,6 @@
 $('#formLogin').on('submit', function (e) {
 
-    const inputLoginEmail = $('#inputLoginEmail').val();
+    const inputLoginNik = $('#inputLoginNik').val();
     const inputLoginPassword = $('#inputLoginPassword').val();
     const inputLoginRemember = $('#inputLoginRemember').is(':checked');
 
@@ -10,7 +10,7 @@ $('#formLogin').on('submit', function (e) {
         type: "POST",
         url: "/auth/login",
         data: {
-            email: inputLoginEmail,
+            nik: inputLoginNik,
             password: inputLoginPassword,
             remember: inputLoginRemember
         },

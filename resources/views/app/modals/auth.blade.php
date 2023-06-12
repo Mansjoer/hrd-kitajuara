@@ -12,8 +12,8 @@
                         </p>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Email address</label>
-                        <input id="inputLoginEmail" type="email" class="form-control" placeholder="nama@dbeautyhouse.com" autocomplete="off" tabindex="1">
+                        <label class="form-label">NIK</label>
+                        <input id="inputLoginNik" type="text" class="form-control" placeholder="DBH0000" autocomplete="off" tabindex="1" style="text-transform: uppercase;">
                     </div>
                     <div class="mb-2">
                         <label class="form-label">
@@ -67,7 +67,7 @@
             <div class="modal-body text-center py-4">
                 <i class="ti ti-alert-triangle icon mb-3 text-danger icon-lg"></i>
                 <h3>LOGIN GAGAL</h3>
-                <div class="text-muted">Email atau kata sandi salah.</div>
+                <div class="text-muted">NIK atau kata sandi salah.</div>
             </div>
         </div>
     </div>

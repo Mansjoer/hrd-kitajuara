@@ -19,4 +19,8 @@ class Controller extends BaseController
         $version = ChangeLog::latest()->first();
         View::share(compact('site_setting', 'version'));
     }
+
+    public function divisionPositions()
+    {
+    }
 }

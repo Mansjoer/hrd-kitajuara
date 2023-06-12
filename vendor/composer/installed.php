@@ -1,15 +1,24 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '6a1a1de78a1443bf6d85b191a1194ddeda5a8f04',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
+        'akuechler/laravel-geoly' => array(
+            'pretty_version' => 'v1.0.6',
+            'version' => '1.0.6.0',
+            'reference' => '07b76c573abe1049d9a3f65ee870649443903dbf',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../akuechler/laravel-geoly',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'brick/math' => array(
             'pretty_version' => '0.11.0',
             'version' => '0.11.0.0',
@@ -371,9 +380,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '6a1a1de78a1443bf6d85b191a1194ddeda5a8f04',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

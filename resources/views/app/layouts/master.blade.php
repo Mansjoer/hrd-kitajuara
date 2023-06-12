@@ -33,10 +33,34 @@
     </style>
 </head>
 
-<body>
+<body class="d-flex flex-column">
     <script src="{{ asset('app/custom/js/jquery-3.7.0.min.js') }}"></script>
     <script src="{{ asset('app/custom/js/theme.js') }}"></script>
-    <div class="page">
+    <div class="page page-center" id="loader">
+        <div class="container container-slim py-4">
+            <div class="text-center">
+                <div class="mb-3">
+                    <a class="navbar-brand navbar-brand-autodark">
+                        <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+                            <a style="text-decoration: none;">
+                                <div class="page-pretitle">
+                                    {{ $site_setting['title']->value }}
+                                </div>
+                                <h2 class="page-title">
+                                    {{ $site_setting['subtitle']->value }}
+                                </h2>
+                            </a>
+                        </h1>
+                    </a>
+                </div>
+                <div class="text-muted mb-3">Memuat Aplikasi...</div>
+                <div class="progress progress-sm">
+                    <div class="progress-bar progress-bar-indeterminate"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page" id="mainPage" style="display: none;">
         @include('app.includes.header')
         @if (Auth::check())
             @include('app.includes.navbar')

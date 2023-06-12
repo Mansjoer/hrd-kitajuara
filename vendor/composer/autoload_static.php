@@ -173,6 +173,7 @@ class ComposerStaticInit45149bb2c703fc090d9b2ed173b34592
         'A' => 
         array (
             'App\\' => 4,
+            'Akuechler\\' => 10,
         ),
     );
 
@@ -511,6 +512,10 @@ class ComposerStaticInit45149bb2c703fc090d9b2ed173b34592
             0 => __DIR__ . '/../..' . '/app',
             1 => __DIR__ . '/..' . '/laravel/pint/app',
         ),
+        'Akuechler\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/akuechler/laravel-geoly/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -524,11 +529,18 @@ class ComposerStaticInit45149bb2c703fc090d9b2ed173b34592
     );
 
     public static $classMap = array (
+        'Akuechler\\Geoly' => __DIR__ . '/..' . '/akuechler/laravel-geoly/src/Geoly.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
+        'App\\Http\\Controllers\\BranchController' => __DIR__ . '/../..' . '/app/Http/Controllers/BranchController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
+        'App\\Http\\Controllers\\DivisionController' => __DIR__ . '/../..' . '/app/Http/Controllers/DivisionController.php',
+        'App\\Http\\Controllers\\EmployeeController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmployeeController.php',
+        'App\\Http\\Controllers\\PositionController' => __DIR__ . '/../..' . '/app/Http/Controllers/PositionController.php',
+        'App\\Http\\Controllers\\RoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/RoleController.php',
+        'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -539,11 +551,16 @@ class ComposerStaticInit45149bb2c703fc090d9b2ed173b34592
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Models\\Announcement' => __DIR__ . '/../..' . '/app/Models/Announcement.php',
         'App\\Models\\Branch' => __DIR__ . '/../..' . '/app/Models/Branch.php',
         'App\\Models\\ChangeLog' => __DIR__ . '/../..' . '/app/Models/ChangeLog.php',
+        'App\\Models\\Departement' => __DIR__ . '/../..' . '/app/Models/Departement.php',
+        'App\\Models\\Employee' => __DIR__ . '/../..' . '/app/Models/Employee.php',
+        'App\\Models\\Position' => __DIR__ . '/../..' . '/app/Models/Position.php',
         'App\\Models\\Role' => __DIR__ . '/../..' . '/app/Models/Role.php',
         'App\\Models\\SettingSite' => __DIR__ . '/../..' . '/app/Models/SettingSite.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\UserAttendance' => __DIR__ . '/../..' . '/app/Models/UserAttendance.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

@@ -10,14 +10,14 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email'
+            'nik' => 'required'
         ]);
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
+        if (Auth::attempt(['nik' => $request->nik, 'password' => $request->password], $request->remember)) {
             $response = [
                 'success' => true,
                 'code' => 200,
                 'data' => [
-                    'email' => $request->email,
+                    'nik' => $request->nik,
                     'password' => $request->password,
                     'remember' => $request->remember
                 ]
@@ -27,7 +27,7 @@ class AuthController extends Controller
                 'success' => false,
                 'code' => 200,
                 'data' => [
-                    'email' => $request->email,
+                    'nik' => $request->nik,
                     'password' => $request->password,
                     'remember' => $request->remember
                 ]

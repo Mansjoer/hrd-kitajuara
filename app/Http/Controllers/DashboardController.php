@@ -18,9 +18,4 @@ class DashboardController extends Controller
         // }
         return view('app.dashboard');
     }
-
-    public function test()
-    {
-        return 'ea';
-    }
 }

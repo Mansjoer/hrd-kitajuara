@@ -12,3 +12,8 @@ document.querySelectorAll('.tomSelect').forEach((el) => {
     new TomSelect(el, settings);
 });
 
+jQuery(document).ready(function() {
+    $('#loader').fadeOut('slow', function () {  
+        $('#mainPage').fadeIn('slow');
+    });
+});
