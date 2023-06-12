@@ -20,7 +20,8 @@ class Controller extends BaseController
         View::share(compact('site_setting', 'version'));
     }
 
-    public function divisionPositions()
+    public function structure()
     {
+        return view('app.structure');
     }
 }

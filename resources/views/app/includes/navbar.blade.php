@@ -33,13 +33,13 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);">
+                    <li class="nav-item {{ Request::is('structure*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('app-structure') }}">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <i class="ti ti-briefcase icon"></i>
                             </span>
                             <span class="nav-link-title">
-                                Divisi & Jabatan
+                                Struktural
                             </span>
                         </a>
                     </li>

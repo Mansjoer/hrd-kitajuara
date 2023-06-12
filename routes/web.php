@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
@@ -33,5 +34,11 @@ Route::controller(EmployeeController::class)->group(function () {
     Route::get('/employees', 'index')->name('app-employees');
     Route::get('/employees/create', 'create')->name('app-employees-create');
     Route::post('/employees/post-create', 'postcreate')->name('app-employees-post-create');
+    Route::get('/employees/edit/{slug}', 'edit')->name('app-employees-edit');
+    Route::post('/employees/update/{slug}', 'update')->name('app-employees-update');
     Route::post('/employees/delete', 'delete')->name('app-employees-delete');
+});
+
+Route::controller(Controller::class)->group(function () {
+    Route::get('/structure', 'structure')->name('app-structure');
 });
