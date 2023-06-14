@@ -1,0 +1,610 @@
+[
+  {
+    "nama_bank": "BANK BCA (BANK CENTRAL ASIA)",
+    "sandi_bank": "014"
+  },
+  {
+    "nama_bank": "BANK MANDIRI",
+    "sandi_bank": "008"
+  },
+  {
+    "nama_bank": "BANK BNI (BANK NEGARA INDONESIA)",
+    "sandi_bank": "009"
+  },
+  {
+    "nama_bank": "BANK SYARIAH INDONESIA (Eks BNI SYARIAH)",
+    "sandi_bank": 427
+  },
+  {
+    "nama_bank": "BANK BRI (BANK RAKYAT INDONESIA)",
+    "sandi_bank": "002"
+  },
+  {
+    "nama_bank": "BANK SYARIAH INDONESIA (Eks BSM)",
+    "sandi_bank": 451
+  },
+  {
+    "nama_bank": "BANK CIMB NIAGA",
+    "sandi_bank": "022"
+  },
+  {
+    "nama_bank": "BANK CIMB NIAGA SYARIAH",
+    "sandi_bank": "022"
+  },
+  {
+    "nama_bank": "BANK MUAMALAT",
+    "sandi_bank": 147
+  },
+  {
+    "nama_bank": "BANK BTPN (BANK TABUNGAN PENSIUNAN NASIONAL)",
+    "sandi_bank": 213
+  },
+  {
+    "nama_bank": "BANK BTPN SYARIAH",
+    "sandi_bank": 547
+  },
+  {
+    "nama_bank": "JENIUS",
+    "sandi_bank": 213
+  },
+  {
+    "nama_bank": "BANK SYARIAH INDONESIA (Eks BRI SYARIAH)",
+    "sandi_bank": 422
+  },
+  {
+    "nama_bank": "BANK TABUNGAN NEGARA (BANK BTN)",
+    "sandi_bank": 200
+  },
+  {
+    "nama_bank": "PERMATA BANK",
+    "sandi_bank": "013"
+  },
+  {
+    "nama_bank": "BANK DANAMON",
+    "sandi_bank": "011"
+  },
+  {
+    "nama_bank": "BANK BII MAYBANK",
+    "sandi_bank": "016"
+  },
+  {
+    "nama_bank": "BANK MEGA",
+    "sandi_bank": 426
+  },
+  {
+    "nama_bank": "BANK SINARMAS",
+    "sandi_bank": 153
+  },
+  {
+    "nama_bank": "BANK COMMONWEALTH",
+    "sandi_bank": 950
+  },
+  {
+    "nama_bank": "BANK OCBC NISP",
+    "sandi_bank": "028"
+  },
+  {
+    "nama_bank": "BANK BUKOPIN",
+    "sandi_bank": 441
+  },
+  {
+    "nama_bank": "BANK BUKOPIN SYARIAH",
+    "sandi_bank": 521
+  },
+  {
+    "nama_bank": "BANK BCA SYARIAH",
+    "sandi_bank": 536
+  },
+  {
+    "nama_bank": "BANK LIPPO",
+    "sandi_bank": "026"
+  },
+  {
+    "nama_bank": "CITIBANK",
+    "sandi_bank": "031"
+  },
+  {
+    "nama_bank": "INDOSAT DOMPETKU",
+    "sandi_bank": 789
+  },
+  {
+    "nama_bank": "TELKOMSEL TCASH",
+    "sandi_bank": 911
+  },
+  {
+    "nama_bank": "LINKAJA",
+    "sandi_bank": 911
+  },
+  {
+    "nama_bank": "BANK DBS INDONESIA",
+    "sandi_bank": "046"
+  },
+  {
+    "nama_bank": "DIGIBANK",
+    "sandi_bank": "046"
+  },
+  {
+    "nama_bank": "SEABANK (Eks BANK KESEJAHTERAAN EKONOMI)",
+    "sandi_bank": 535
+  },
+  {
+    "nama_bank": "BANK JAGO (Eks BANK ARTOS INDONESIA)",
+    "sandi_bank": 542
+  },
+  {
+    "nama_bank": "BANK UOB INDONESIA",
+    "sandi_bank": "023"
+  },
+  {
+    "nama_bank": "TMRW by UOB INDONESIA",
+    "sandi_bank": "023"
+  },
+  {
+    "nama_bank": "BANK NEO COMMERCE (Akulaku)",
+    "sandi_bank": 490
+  },
+  {
+    "nama_bank": "ALLO BANK (Eks BANK HARDA)",
+    "sandi_bank": 567
+  },
+  {
+    "nama_bank": "BANK ALADIN (Eks BANK MAYBANK INDOCORP)",
+    "sandi_bank": 947
+  },
+  {
+    "nama_bank": "BANK JABAR dan BANTEN (BJB)",
+    "sandi_bank": 110
+  },
+  {
+    "nama_bank": "BANK DKI JAKARTA",
+    "sandi_bank": 111
+  },
+  {
+    "nama_bank": "BPD DIY (YOGYAKARTA)",
+    "sandi_bank": 112
+  },
+  {
+    "nama_bank": "BANK JATENG (JAWA TENGAH)",
+    "sandi_bank": 113
+  },
+  {
+    "nama_bank": "BANK JATIM (JAWA BARAT)",
+    "sandi_bank": 114
+  },
+  {
+    "nama_bank": "BPD JAMBI",
+    "sandi_bank": 115
+  },
+  {
+    "nama_bank": "BPD ACEH",
+    "sandi_bank": 116
+  },
+  {
+    "nama_bank": "BPD ACEH SYARIAH",
+    "sandi_bank": 116
+  },
+  {
+    "nama_bank": "BANK SUMUT",
+    "sandi_bank": 117
+  },
+  {
+    "nama_bank": "BANK NAGARI (BANK SUMBAR)",
+    "sandi_bank": 118
+  },
+  {
+    "nama_bank": "BANK RIAU KEPRI",
+    "sandi_bank": 119
+  },
+  {
+    "nama_bank": "BANK SUMSEL BABEL",
+    "sandi_bank": 120
+  },
+  {
+    "nama_bank": "BANK LAMPUNG",
+    "sandi_bank": 121
+  },
+  {
+    "nama_bank": "BANK KALSEL (BANK KALIMANTAN SELATAN)",
+    "sandi_bank": 122
+  },
+  {
+    "nama_bank": "BANK KALBAR (BANK KALIMANTAN BARAT)",
+    "sandi_bank": 123
+  },
+  {
+    "nama_bank": "BANK KALTIMTARA (BANK KALIMANTAN TIMUR DAN UTARA)",
+    "sandi_bank": 124
+  },
+  {
+    "nama_bank": "BANK KALTENG (BANK KALIMANTAN TENGAH)",
+    "sandi_bank": 125
+  },
+  {
+    "nama_bank": "BANK SULSELBAR (BANK SULAWESI SELATAN DAN BARAT)",
+    "sandi_bank": 126
+  },
+  {
+    "nama_bank": "BANK SULUTGO (BANK SULAWESI UTARA DAN GORONTALO)",
+    "sandi_bank": 127
+  },
+  {
+    "nama_bank": "BANK NTB",
+    "sandi_bank": 128
+  },
+  {
+    "nama_bank": "BANK NTB SYARIAH",
+    "sandi_bank": 128
+  },
+  {
+    "nama_bank": "BANK BPD BALI",
+    "sandi_bank": 129
+  },
+  {
+    "nama_bank": "BANK NTT",
+    "sandi_bank": 130
+  },
+  {
+    "nama_bank": "BANK MALUKU MALUT",
+    "sandi_bank": 131
+  },
+  {
+    "nama_bank": "BANK PAPUA",
+    "sandi_bank": 132
+  },
+  {
+    "nama_bank": "BANK BENGKULU",
+    "sandi_bank": 133
+  },
+  {
+    "nama_bank": "BANK SULTENG (BANK SULAWESI TENGAH)",
+    "sandi_bank": 134
+  },
+  {
+    "nama_bank": "BANK SULTRA",
+    "sandi_bank": 135
+  },
+  {
+    "nama_bank": "BANK BPD BANTEN",
+    "sandi_bank": 137
+  },
+  {
+    "nama_bank": "BANK EKSPOR INDONESIA",
+    "sandi_bank": "003"
+  },
+  {
+    "nama_bank": "BANK PANIN",
+    "sandi_bank": "019"
+  },
+  {
+    "nama_bank": "BANK PANIN DUBAI SYARIAH",
+    "sandi_bank": 517
+  },
+  {
+    "nama_bank": "BANK ARTA NIAGA KENCANA",
+    "sandi_bank": "020"
+  },
+  {
+    "nama_bank": "BANK UOB INDONESIA (BANK BUANA INDONESIA)",
+    "sandi_bank": "023"
+  },
+  {
+    "nama_bank": "AMERICAN EXPRESS BANK LTD",
+    "sandi_bank": "030"
+  },
+  {
+    "nama_bank": "CITIBANK N.A.",
+    "sandi_bank": "031"
+  },
+  {
+    "nama_bank": "JP. MORGAN CHASE BANK, N.A.",
+    "sandi_bank": "032"
+  },
+  {
+    "nama_bank": "BANK OF AMERICA, N.A",
+    "sandi_bank": "033"
+  },
+  {
+    "nama_bank": "ING INDONESIA BANK",
+    "sandi_bank": "034"
+  },
+  {
+    "nama_bank": "BANK MULTICOR",
+    "sandi_bank": "036"
+  },
+  {
+    "nama_bank": "BANK ARTHA GRAHA INTERNASIONAL",
+    "sandi_bank": "037"
+  },
+  {
+    "nama_bank": "BANK CREDIT AGRICOLE INDOSUEZ",
+    "sandi_bank": "039"
+  },
+  {
+    "nama_bank": "THE BANGKOK BANK COMP. LTD",
+    "sandi_bank": "040"
+  },
+  {
+    "nama_bank": "THE HONGKONG & SHANGHAI B.C. (BANK HSBC)",
+    "sandi_bank": "041"
+  },
+  {
+    "nama_bank": "THE BANK OF TOKYO MITSUBISHI UFJ LTD",
+    "sandi_bank": "042"
+  },
+  {
+    "nama_bank": "BANK SUMITOMO MITSUI INDONESIA",
+    "sandi_bank": "045"
+  },
+  {
+    "nama_bank": "BANK RESONA PERDANIA",
+    "sandi_bank": "047"
+  },
+  {
+    "nama_bank": "BANK MIZUHO INDONESIA",
+    "sandi_bank": "048"
+  },
+  {
+    "nama_bank": "STANDARD CHARTERED BANK",
+    "sandi_bank": "050"
+  },
+  {
+    "nama_bank": "BANK ABN AMRO",
+    "sandi_bank": "052"
+  },
+  {
+    "nama_bank": "BANK KEPPEL TATLEE BUANA",
+    "sandi_bank": "053"
+  },
+  {
+    "nama_bank": "BANK CAPITAL INDONESIA",
+    "sandi_bank": "054"
+  },
+  {
+    "nama_bank": "BANK BNP PARIBAS INDONESIA",
+    "sandi_bank": "057"
+  },
+  {
+    "nama_bank": "BANK UOB INDONESIA",
+    "sandi_bank": "023"
+  },
+  {
+    "nama_bank": "KOREA EXCHANGE BANK DANAMON",
+    "sandi_bank": "059"
+  },
+  {
+    "nama_bank": "RABOBANK INTERNASIONAL INDONESIA",
+    "sandi_bank": "060"
+  },
+  {
+    "nama_bank": "BANK ANZ INDONESIA",
+    "sandi_bank": "061"
+  },
+  {
+    "nama_bank": "BANK WOORI SAUDARA",
+    "sandi_bank": "068"
+  },
+  {
+    "nama_bank": "BANK OF CHINA",
+    "sandi_bank": "069"
+  },
+  {
+    "nama_bank": "BANK BUMI ARTA",
+    "sandi_bank": "076"
+  },
+  {
+    "nama_bank": "BANK EKONOMI",
+    "sandi_bank": "087"
+  },
+  {
+    "nama_bank": "BANK ANTARDAERAH",
+    "sandi_bank": "088"
+  },
+  {
+    "nama_bank": "BANK HAGA",
+    "sandi_bank": "089"
+  },
+  {
+    "nama_bank": "BANK IFI",
+    "sandi_bank": "093"
+  },
+  {
+    "nama_bank": "BANK CENTURY",
+    "sandi_bank": "095"
+  },
+  {
+    "nama_bank": "BANK MAYAPADA",
+    "sandi_bank": "097"
+  },
+  {
+    "nama_bank": "BANK NUSANTARA PARAHYANGAN",
+    "sandi_bank": 145
+  },
+  {
+    "nama_bank": "BANK SWADESI (BANK OF INDIA INDONESIA)",
+    "sandi_bank": 146
+  },
+  {
+    "nama_bank": "BANK MESTIKA DHARMA",
+    "sandi_bank": 151
+  },
+  {
+    "nama_bank": "BANK SHINHAN INDONESIA (BANK METRO EXPRESS)",
+    "sandi_bank": 152
+  },
+  {
+    "nama_bank": "BANK MASPION INDONESIA",
+    "sandi_bank": 157
+  },
+  {
+    "nama_bank": "BANK HAGAKITA",
+    "sandi_bank": 159
+  },
+  {
+    "nama_bank": "BANK GANESHA",
+    "sandi_bank": 161
+  },
+  {
+    "nama_bank": "BANK WINDU KENTJANA",
+    "sandi_bank": 162
+  },
+  {
+    "nama_bank": "BANK ICBC INDONESIA (HALIM INDONESIA BANK)",
+    "sandi_bank": 164
+  },
+  {
+    "nama_bank": "BANK HARMONI INTERNATIONAL",
+    "sandi_bank": 166
+  },
+  {
+    "nama_bank": "BANK QNB KESAWAN (BANK QNB INDONESIA)",
+    "sandi_bank": 167
+  },
+  {
+    "nama_bank": "BANK HIMPUNAN SAUDARA 1906",
+    "sandi_bank": 212
+  },
+  {
+    "nama_bank": "BANK SWAGUNA",
+    "sandi_bank": 405
+  },
+  {
+    "nama_bank": "BANK BISNIS INTERNASIONAL",
+    "sandi_bank": 459
+  },
+  {
+    "nama_bank": "BANK SRI PARTHA",
+    "sandi_bank": 466
+  },
+  {
+    "nama_bank": "BANK JASA JAKARTA",
+    "sandi_bank": 472
+  },
+  {
+    "nama_bank": "BANK BINTANG MANUNGGAL",
+    "sandi_bank": 484
+  },
+  {
+    "nama_bank": "BANK MNC INTERNASIONAL (BANK BUMIPUTERA)",
+    "sandi_bank": 485
+  },
+  {
+    "nama_bank": "BANK YUDHA BHAKTI",
+    "sandi_bank": 490
+  },
+  {
+    "nama_bank": "BANK MITRANIAGA",
+    "sandi_bank": 491
+  },
+  {
+    "nama_bank": "BANK BRI AGRO NIAGA",
+    "sandi_bank": 494
+  },
+  {
+    "nama_bank": "BANK SBI INDONESIA (BANK INDOMONEX)",
+    "sandi_bank": 498
+  },
+  {
+    "nama_bank": "BANK ROYAL INDONESIA",
+    "sandi_bank": 501
+  },
+  {
+    "nama_bank": "BANK NATIONAL NOBU (BANK ALFINDO)",
+    "sandi_bank": 503
+  },
+  {
+    "nama_bank": "BANK MEGA SYARIAH",
+    "sandi_bank": 506
+  },
+  {
+    "nama_bank": "BANK INA PERDANA",
+    "sandi_bank": 513
+  },
+  {
+    "nama_bank": "BANK HARFA",
+    "sandi_bank": 517
+  },
+  {
+    "nama_bank": "PRIMA MASTER BANK",
+    "sandi_bank": 520
+  },
+  {
+    "nama_bank": "BANK PERSYARIKATAN INDONESIA",
+    "sandi_bank": 521
+  },
+  {
+    "nama_bank": "BANK AKITA",
+    "sandi_bank": 525
+  },
+  {
+    "nama_bank": "LIMAN INTERNATIONAL BANK",
+    "sandi_bank": 526
+  },
+  {
+    "nama_bank": "ANGLOMAS INTERNASIONAL BANK",
+    "sandi_bank": 531
+  },
+  {
+    "nama_bank": "BANK SAHABAT SAMPEORNA (BANK DIPO INTERNATIONAL)",
+    "sandi_bank": 523
+  },
+  {
+    "nama_bank": "BANK PURBA DANARTA",
+    "sandi_bank": 547
+  },
+  {
+    "nama_bank": "BANK MULTI ARTA SENTOSA",
+    "sandi_bank": 548
+  },
+  {
+    "nama_bank": "BANK MAYORA INDONESIA",
+    "sandi_bank": 553
+  },
+  {
+    "nama_bank": "BANK INDEX SELINDO",
+    "sandi_bank": 555
+  },
+  {
+    "nama_bank": "BANK VICTORIA INTERNATIONAL",
+    "sandi_bank": 566
+  },
+  {
+    "nama_bank": "BANK EKSEKUTIF",
+    "sandi_bank": 558
+  },
+  {
+    "nama_bank": "CENTRATAMA NASIONAL BANK",
+    "sandi_bank": 559
+  },
+  {
+    "nama_bank": "BANK FAMA INTERNASIONAL",
+    "sandi_bank": 562
+  },
+  {
+    "nama_bank": "BANK MANDIRI TASPEN POS (BANK SINAR HARAPAN BALI)",
+    "sandi_bank": 564
+  },
+  {
+    "nama_bank": "BANK AGRIS (BANK FINCONESIA)",
+    "sandi_bank": 945
+  },
+  {
+    "nama_bank": "BANK MERINCORP",
+    "sandi_bank": 946
+  },
+  {
+    "nama_bank": "BANK OCBC – INDONESIA",
+    "sandi_bank": 948
+  },
+  {
+    "nama_bank": "BANK CTBC (CHINA TRUST) INDONESIA",
+    "sandi_bank": 949
+  },
+  {
+    "nama_bank": "BANK BJB SYARIAH",
+    "sandi_bank": 425
+  },
+  {
+    "nama_bank": "BPR KS (KARYAJATNIKA SEDAYA)",
+    "sandi_bank": 688
+  }
+]

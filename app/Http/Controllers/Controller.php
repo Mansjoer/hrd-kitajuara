@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\ChangeLog;
 use App\Models\SettingSite;
 use Illuminate\Support\Facades\View;
@@ -17,7 +18,8 @@ class Controller extends BaseController
     {
         $site_setting = SettingSite::all()->keyBy('key');
         $version = ChangeLog::latest()->first();
-        View::share(compact('site_setting', 'version'));
+        $bankList = collect(json_decode(file_get_contents("app/custom/json/bank.json"), true));
+        View::share(compact('site_setting', 'version', 'bankList'));
     }
 
     public function structure()

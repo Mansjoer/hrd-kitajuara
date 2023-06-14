@@ -12,7 +12,7 @@
                 App / Karyawan
             </div>
             <h2 class="page-title">
-                Profil
+                Biodata
             </h2>
         </div>
         <div class="col-auto ms-auto d-print-none">
@@ -36,11 +36,13 @@
                 <div class="card-body">
                     <h4 class="subheader">Umum</h4>
                     <div class="list-group list-group-transparent">
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-center active">Informasi Karyawan</a>
+                        <a href="{{ route('app-users-profile', $user->slug) }}" class="list-group-item list-group-item-action d-flex align-items-center active">Biodata</a>
+                        <a href="javascript:void(0);" class="list-group-item list-group-item-action">Kehadiran</a>
+                        <a href="javascript:void(0);" class="list-group-item list-group-item-action">Pengajuan</a>
                     </div>
                     <h4 class="subheader mt-4">Privasi</h4>
                     <div class="list-group list-group-transparent">
-                        <a href="#" class="list-group-item list-group-item-action">Kata Sandi</a>
+                        <a href="javascript:void(0);" class="list-group-item list-group-item-action">Kata Sandi</a>
                     </div>
                 </div>
             </div>

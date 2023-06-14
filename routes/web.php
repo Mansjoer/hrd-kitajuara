@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,9 +42,15 @@ Route::controller(EmployeeController::class)->group(function () {
 });
 
 Route::controller(ProfileController::class)->group(function () {
-    Route::get('/users/{slug}/profile', 'profile')->name('app-users-profile');
+    Route::get('/users/profile/{slug}', 'profile')->name('app-users-profile');
 });
 
 Route::controller(Controller::class)->group(function () {
     Route::get('/structure', 'structure')->name('app-structure');
+});
+
+Route::controller(ExcelController::class)->group(function () {
+    Route::get('/export/employees/pdf', 'exportEmployeesPdf')->name('app-export-pdf-employees');
+    Route::get('/export/employees/excel', 'exportEmployeesExcel')->name('app-export-excel-employees');
+    Route::get('/export/employees/csv', 'exportEmployeesCsv')->name('app-export-csv-employees');
 });

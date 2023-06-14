@@ -149,8 +149,9 @@
                                         <label class="form-label">Nama Bank</label>
                                         <select name="bank" type="text" class="form-select tomSelect" placeholder="Pilih bank...">
                                             <option value=""></option>
-                                            <option value="BCA" {{ $user->employee->bank == 'BCA' ? 'selected' : '' }}>Bank Central Asia</option>
-                                            <option value="Mandiri" {{ $user->employee->bank == 'Mandiri' ? 'selected' : '' }}>Mandiri</option>
+                                            @foreach ($bankList as $bank)
+                                                <option value="{{ $bank['sandi_bank'] }}" {{ $user->employee->bank == $bank['sandi_bank'] ? 'selected' : '' }}>{{ $bank['nama_bank'] }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

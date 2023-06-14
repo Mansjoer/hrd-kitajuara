@@ -18,6 +18,21 @@
         <!-- Page title actions -->
         <div class="col-auto ms-auto d-print-none">
             <div class="btn-list">
+                <a href="{{ route('app-employees-create') }}" class="btn btn-outline-lime d-none d-sm-inline-block me-3">
+                    <i class="ti ti-cloud-download icon"></i>
+                    Import
+                </a>
+                <div class="dropdown me-3 d-none d-md-block">
+                    <a href="#" class="btn btn-outline-teal dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="ti ti-cloud-download icon"></i>
+                        Export
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{ route('app-export-pdf-employees') }}">PDF</a>
+                        <a class="dropdown-item" href="{{ route('app-export-excel-employees') }}">Excel</a>
+                        <a class="dropdown-item" href="{{ route('app-export-csv-employees') }}">CSV</a>
+                    </div>
+                </div>
                 <div class="me-3 d-none d-md-block">
                     <form action="" method="GET" autocomplete="off" novalidate spellcheck="false" autocomplete="off">
                         <div class="input-icon">
@@ -48,23 +63,23 @@
                     <table class="table" id="tableEmployees">
                         <thead>
                             <tr>
-                                <th class="text-center"><button class="table-sort" data-sort="sort-nik">NIK</th>
+                                <th class="text-center "><button class="table-sort" data-sort="sort-nik">NIK</th>
                                 <th><button class="table-sort" data-sort="sort-nama">Nama</button></th>
-                                <th><button class="table-sort" data-sort="sort-cabang">Cabang</button></th>
+                                <th class="d-none d-sm-block"><button class="table-sort" data-sort="sort-cabang">Cabang</button></th>
                                 <th><button class="table-sort" data-sort="sort-departemen">Departemen</button></th>
                                 <th><button class="table-sort" data-sort="sort-jabatan">Jabatan</button></th>
-                                <th class="text-center" style="width: 5%">Actions</th>
+                                <th class="text-center d-print-none" style="width: 5%">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="table-tbody">
                             @forelse ($employees as $employee)
                                 <tr class="data">
-                                    <td class="text-center sort-nik">{{ Str::upper($employee->nik) }}</td>
+                                    <td class="text-center sort-nik ">{{ Str::upper($employee->nik) }}</td>
                                     <td class="sort-nama"><strong>{{ $employee->user->name }}</strong></td>
-                                    <td class="sort-cabang">{{ $employee->branch->name }}</td>
+                                    <td class="sort-cabang d-none d-sm-block">{{ $employee->branch->name }}</td>
                                     <td class="sort-departemen">{{ $employee->departement->name }}</td>
                                     <td class="sort-jabatan">{{ $employee->position->name }}</td>
-                                    <td class="d-flex justify-content-center">
+                                    <td class="d-flex justify-content-center d-print-none">
                                         <a href="{{ route('app-users-profile', $employee->user->slug) }}" class="text-primary me-2" aria-label="Lihat">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -107,11 +122,11 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-12">
-            <div class="d-flex justify-content-end">
-                {{ $employees->links() }}
+                <div class="col-lg-12 mt-3">
+                    <div class="d-flex justify-content-end">
+                        {{ $employees->links() }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

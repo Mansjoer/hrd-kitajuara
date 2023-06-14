@@ -148,8 +148,9 @@
                                         <label class="form-label">Nama Bank</label>
                                         <select name="bank" type="text" class="form-select tomSelect" placeholder="Pilih bank...">
                                             <option value=""></option>
-                                            <option value="BCA">Bank Central Asia</option>
-                                            <option value="Mandiri">Mandiri</option>
+                                            @foreach ($bankList as $bank)
+                                                <option value="{{ $bank['sandi_bank'] }}">{{ $bank['nama_bank'] }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

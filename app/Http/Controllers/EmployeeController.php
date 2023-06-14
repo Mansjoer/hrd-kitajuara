@@ -26,12 +26,12 @@ class EmployeeController extends Controller
                 ->orWhere('branches.name', 'LIKE', "%" . $request->search . "%")
                 ->orWhere('positions.name', 'LIKE', "%" . $request->search . "%")
                 ->orWhere('departements.name', 'LIKE', "%" . $request->search . "%")
-                ->paginate(15);
+                ->paginate(5);
         } else {
             $employees = Employee::join('users', 'employees.user_id', '=', 'users.id')
                 ->join('branches', 'employees.branch_id', '=', 'branches.id')
                 ->join('departements', 'employees.division_id', '=', 'departements.id')
-                ->join('positions', 'employees.position_id', '=', 'positions.id')->paginate(15);
+                ->join('positions', 'employees.position_id', '=', 'positions.id')->paginate(5);
             // dd($employees);
             $data = '';
         }
