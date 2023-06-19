@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Branch;
@@ -28,12 +29,8 @@ class EmployeeController extends Controller
                 ->orWhere('departements.name', 'LIKE', "%" . $request->search . "%")
                 ->paginate(5);
         } else {
-            $employees = Employee::join('users', 'employees.user_id', '=', 'users.id')
-                ->join('branches', 'employees.branch_id', '=', 'branches.id')
-                ->join('departements', 'employees.division_id', '=', 'departements.id')
-                ->join('positions', 'employees.position_id', '=', 'positions.id')->paginate(5);
-            // dd($employees);
             $data = '';
+            $employees = Employee::select('*')->paginate(5);
         }
         return view('app.pages.employees.index', compact('employees', 'data'));
     }

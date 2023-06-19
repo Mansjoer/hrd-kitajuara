@@ -18,17 +18,17 @@
         <!-- Page title actions -->
         <div class="col-auto ms-auto d-print-none">
             <div class="btn-list">
-                <a href="{{ route('app-employees-create') }}" class="btn btn-outline-lime d-none d-sm-inline-block me-3">
-                    <i class="ti ti-cloud-download icon"></i>
+                <button class="btn btn-outline-lime d-none d-sm-inline-block me-3" data-bs-toggle="modal" data-bs-target="#modalImportEmployees">
+                    <i class="ti ti-cloud-upload icon"></i>
                     Import
-                </a>
+                </button>
                 <div class="dropdown me-3 d-none d-md-block">
                     <a href="#" class="btn btn-outline-teal dropdown-toggle" data-bs-toggle="dropdown">
                         <i class="ti ti-cloud-download icon"></i>
                         Export
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{ route('app-export-pdf-employees') }}">PDF</a>
+                        {{-- <a class="dropdown-item" href="{{ route('app-export-pdf-employees') }}">PDF</a> --}}
                         <a class="dropdown-item" href="{{ route('app-export-excel-employees') }}">Excel</a>
                         <a class="dropdown-item" href="{{ route('app-export-csv-employees') }}">CSV</a>
                     </div>
@@ -76,9 +76,23 @@
                                 <tr class="data">
                                     <td class="text-center sort-nik ">{{ Str::upper($employee->nik) }}</td>
                                     <td class="sort-nama"><strong>{{ $employee->user->name }}</strong></td>
-                                    <td class="sort-cabang d-none d-sm-block">{{ $employee->branch->name }}</td>
-                                    <td class="sort-departemen">{{ $employee->departement->name }}</td>
-                                    <td class="sort-jabatan">{{ $employee->position->name }}</td>
+                                    @if ($employee->branch != null)
+                                        <td class="sort-cabang d-none d-sm-block">{{ $employee->branch->name }}</td>
+                                    @else
+                                        <td class="sort-cabang d-none d-sm-block">-</td>
+                                    @endif
+
+                                    @if ($employee->departement != null)
+                                        <td class="sort-departemen">{{ $employee->departement->name }}</td>
+                                    @else
+                                        <td class="sort-departemen">-</td>
+                                    @endif
+
+                                    @if ($employee->position != null)
+                                        <td class="sort-jabatan">{{ $employee->position->name }}</td>
+                                    @else
+                                        <td class="sort-jabatan">-</td>
+                                    @endif
                                     <td class="d-flex justify-content-center d-print-none">
                                         <a href="{{ route('app-users-profile', $employee->user->slug) }}" class="text-primary me-2" aria-label="Lihat">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -130,10 +144,15 @@
             </div>
         </div>
     </div>
+    @include('app.modals.uploadFiles')
 @endsection
 
 @section('cscript')
     <script>
+        // $('#inputUploadFiles').on('change', function() {
+        //     $('#formUploadFiles').submit();
+        // });
+
         document.addEventListener("DOMContentLoaded", function() {
             const list = new List('table-employee', {
                 sortClass: 'table-sort',

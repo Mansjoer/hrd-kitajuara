@@ -18,7 +18,9 @@
                     <div class="mb-2">
                         <label class="form-label">
                             Kata Sandi
-                            {{-- <span class="form-label-description">
+                            {{-- <span class="form-label-desc
+                            
+                            ription">
                                 <a href="./forgot-password.html">I forgot password</a>
                             </span> --}}
                         </label>

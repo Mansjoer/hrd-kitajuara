@@ -50,7 +50,8 @@ Route::controller(Controller::class)->group(function () {
 });
 
 Route::controller(ExcelController::class)->group(function () {
-    Route::get('/export/employees/pdf', 'exportEmployeesPdf')->name('app-export-pdf-employees');
+    // Route::get('/export/employees/pdf', 'exportEmployeesPdf')->name('app-export-pdf-employees');
     Route::get('/export/employees/excel', 'exportEmployeesExcel')->name('app-export-excel-employees');
     Route::get('/export/employees/csv', 'exportEmployeesCsv')->name('app-export-csv-employees');
+    Route::post('/import/employees', 'importEmployees')->name('app-import-employees');
 });

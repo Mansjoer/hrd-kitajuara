@@ -25,20 +25,20 @@ class EmployeesExport implements FromCollection, WithHeadings, WithMapping, Shou
             'Nama',
             'Email',
             'No Handphone',
-            'Alamat KTP',
-            'Alamat Domisili',
+            'Alamat_KTP',
+            'Alamat_Domisili',
             'Edukasi',
             'Kelamin',
             'Agama',
-            'Tempat Lahir',
-            'Tanggal Lahir',
-            'Tanggal Masuk',
+            'Tempat_Lahir',
+            'Tanggal_Lahir',
+            'Tanggal_Masuk',
             'Status',
             'Periode',
             'KTP',
             'NPWP',
             'Bank',
-            'No Rekening',
+            'No_Rekening',
             'Cabang',
             'Departemen',
             'Jabatan',
@@ -47,6 +47,23 @@ class EmployeesExport implements FromCollection, WithHeadings, WithMapping, Shou
 
     public function map($employee): array
     {
+        if ($employee->branch != null) {
+            $branch = $employee->branch->name;
+        } else {
+            $branch = '-';
+        }
+
+        if ($employee->departement != null) {
+            $departement = $employee->departement->name;
+        } else {
+            $departement = '-';
+        }
+
+        if ($employee->position != null) {
+            $position =  $employee->position->name;
+        } else {
+            $position = '-';
+        }
         return [
             $employee->nik,
             $employee->user->name,
@@ -66,9 +83,9 @@ class EmployeesExport implements FromCollection, WithHeadings, WithMapping, Shou
             $employee->npwp,
             $employee->bank,
             $employee->bank_number,
-            $employee->branch->name,
-            $employee->departement->name,
-            $employee->position->name,
+            $branch,
+            $departement,
+            $position
         ];
     }
 }
