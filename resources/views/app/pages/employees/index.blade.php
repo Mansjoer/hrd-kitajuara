@@ -18,22 +18,22 @@
         <!-- Page title actions -->
         <div class="col-auto ms-auto d-print-none">
             <div class="btn-list">
-                <button class="btn btn-outline-lime d-none d-sm-inline-block me-3" data-bs-toggle="modal" data-bs-target="#modalImportEmployees">
+                <button class="btn btn-outline-lime d-none d-sm-inline-block me-1" data-bs-toggle="modal" data-bs-target="#modalImportEmployees">
                     <i class="ti ti-cloud-upload icon"></i>
                     Import
                 </button>
-                <div class="dropdown me-3 d-none d-md-block">
+                <div class="dropdown me-1 d-none d-md-block">
                     <a href="#" class="btn btn-outline-teal dropdown-toggle" data-bs-toggle="dropdown">
                         <i class="ti ti-cloud-download icon"></i>
                         Export
                     </a>
                     <div class="dropdown-menu">
                         {{-- <a class="dropdown-item" href="{{ route('app-export-pdf-employees') }}">PDF</a> --}}
+                        <a class="dropdown-item" href="{{ route('app-export-csv-employees') }}">Csv</a>
                         <a class="dropdown-item" href="{{ route('app-export-excel-employees') }}">Excel</a>
-                        <a class="dropdown-item" href="{{ route('app-export-csv-employees') }}">CSV</a>
                     </div>
                 </div>
-                <div class="me-3 d-none d-md-block">
+                <div class="me-1 d-none d-md-block">
                     <form action="" method="GET" autocomplete="off" novalidate spellcheck="false" autocomplete="off">
                         <div class="input-icon">
                             <input type="text" name="search" class="form-control" placeholder="Cari Karyawan..." value="{{ $data }}" @if ($data) autofocus @endif />
@@ -72,7 +72,7 @@
                             </tr>
                         </thead>
                         <tbody class="table-tbody">
-                            @forelse ($employees as $employee)
+                            @forelse ($employees->sortBy('nik') as $employee)
                                 <tr class="data">
                                     <td class="text-center sort-nik ">{{ Str::upper($employee->nik) }}</td>
                                     <td class="sort-nama"><strong>{{ $employee->user->name }}</strong></td>
@@ -136,11 +136,13 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="col-lg-12 mt-3">
-                    <div class="d-flex justify-content-end">
-                        {{ $employees->links() }}
+                @if ($employees->hasPages())
+                    <div class="col-lg-12 mt-3">
+                        <div class="d-flex justify-content-end">
+                            {{ $employees->links() }}
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>

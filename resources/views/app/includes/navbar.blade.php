@@ -23,7 +23,7 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item {{ Request::is('employees*') ? 'active' : '' }}">
+                    <li class="nav-item {{ (Request::is('employees*') ? 'active' : '' || Request::is('users*')) ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('app-employees') }}">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <i class="ti ti-users icon"></i>

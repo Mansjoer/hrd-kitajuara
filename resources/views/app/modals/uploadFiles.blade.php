@@ -12,7 +12,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-ghost-danger" data-bs-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary" id="btnSubmitLoginForm" tabindex="4">Login</button>
+                    <button type="submit" class="btn btn-primary" id="btnSubmitImportEmployees" tabindex="4">Import</button>
                 </div>
             </form>
         </div>

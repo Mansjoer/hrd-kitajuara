@@ -248,7 +248,7 @@
                 <div class="card mb-3 placeholder-glow">
                     <div class="card-body">
                         <h3 class="card-title">Lainnya <span class="form-help " data-bs-toggle="popover" data-bs-placement="top" data-bs-html="true" data-bs-content="<p>Abaikan jika kamu tidak tahu apa yang akan kamu lakukan.</p>">?</span></h3>
-                        @if (!Auth::user()->isAdmin == 1)
+                        @if (Auth::user()->isAdmin == 1)
                             <div class="row row-cards">
                                 <div class="col-lg-12">
                                     <div class="mb-3">

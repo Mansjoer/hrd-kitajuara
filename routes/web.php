@@ -43,6 +43,7 @@ Route::controller(EmployeeController::class)->group(function () {
 
 Route::controller(ProfileController::class)->group(function () {
     Route::get('/users/profile/{slug}', 'profile')->name('app-users-profile');
+    Route::get('/users/profile/{slug}/attendance', 'attendance')->name('app-users-profile-attendance');
 });
 
 Route::controller(Controller::class)->group(function () {

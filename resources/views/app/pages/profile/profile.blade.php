@@ -9,7 +9,7 @@
         <div class="col">
             <!-- Page pre-title -->
             <div class="page-pretitle">
-                App / Karyawan
+                App / Karyawan / {{ $user->name }}
             </div>
             <h2 class="page-title">
                 Biodata
@@ -37,7 +37,7 @@
                     <h4 class="subheader">Umum</h4>
                     <div class="list-group list-group-transparent">
                         <a href="{{ route('app-users-profile', $user->slug) }}" class="list-group-item list-group-item-action d-flex align-items-center active">Biodata</a>
-                        <a href="javascript:void(0);" class="list-group-item list-group-item-action">Kehadiran</a>
+                        <a href="{{ route('app-users-profile-attendance', $user->slug) }}" class="list-group-item list-group-item-action">Kehadiran</a>
                         <a href="javascript:void(0);" class="list-group-item list-group-item-action">Pengajuan</a>
                     </div>
                     <h4 class="subheader mt-4">Privasi</h4>
@@ -61,6 +61,9 @@
                                 Ubah Foto
                             </a>
                         </div>
+                        <div class="col-auto"><a href="#" class="btn btn-ghost-danger">
+                                Hapus Foto
+                            </a></div>
                     </div>
                     <h3 class="card-title">Informasi Umum</h3>
                     <div class="datagrid mb-3">
@@ -152,6 +155,10 @@
                             <div class="datagrid-title">Periode</div>
                             <div class="datagrid-content">{{ $user->employee->period ? $user->employee->period . ' Bulan' : '-' }}</div>
                         </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">Lama Bekerja</div>
+                            <div class="datagrid-content">{{ \Carbon\Carbon::parse($user->employee->joined_at)->diff(\Carbon\Carbon::now())->format('%y Tahun, %m Bulan %d Hari') }}</div>
+                        </div>
                     </div>
                 </div>
                 {{-- <div class="card-footer bg-transparent mt-auto">
@@ -167,8 +174,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('cscript')
-    <script></script>
 @endsection

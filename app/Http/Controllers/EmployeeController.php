@@ -27,10 +27,10 @@ class EmployeeController extends Controller
                 ->orWhere('branches.name', 'LIKE', "%" . $request->search . "%")
                 ->orWhere('positions.name', 'LIKE', "%" . $request->search . "%")
                 ->orWhere('departements.name', 'LIKE', "%" . $request->search . "%")
-                ->paginate(5);
+                ->paginate(10);
         } else {
             $data = '';
-            $employees = Employee::select('*')->paginate(5);
+            $employees = Employee::select('*')->paginate(10);
         }
         return view('app.pages.employees.index', compact('employees', 'data'));
     }
