@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\EmployeeController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,8 +43,17 @@ Route::controller(EmployeeController::class)->group(function () {
 });
 
 Route::controller(ProfileController::class)->group(function () {
+    Route::get('/my-profile', 'myProfile')->name('app-my-profile');
+    Route::post('/my-profile-change-photo', 'myProfileChangePhoto')->name('app-my-profile-change-photo');
+    Route::get('/my-profile/change-password', 'myProfileChangePassword')->name('app-my-profile-change-password');
+
     Route::get('/users/profile/{slug}', 'profile')->name('app-users-profile');
     Route::get('/users/profile/{slug}/attendance', 'attendance')->name('app-users-profile-attendance');
+    Route::get('/users/profile/{slug}/change-password', 'changePassword')->name('app-users-profile-change-password');
+    Route::post('/users/profile/{slug}/change-photo', 'profileChangePhoto')->name('app-users-profile-change-photo');
+
+    Route::post('/post/change-password', 'postChangePassword')->name('app-post-change-password');
+    Route::post('/post/reset-password', 'postResetPassword')->name('app-post-reset-password');
 });
 
 Route::controller(Controller::class)->group(function () {

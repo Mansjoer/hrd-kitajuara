@@ -42,7 +42,7 @@
                     </div>
                     <h4 class="subheader mt-4">Privasi</h4>
                     <div class="list-group list-group-transparent">
-                        <a href="javascript:void(0);" class="list-group-item list-group-item-action">Kata Sandi</a>
+                        <a href="{{ route('app-users-profile-change-password', $user->slug) }}" class="list-group-item list-group-item-action">Kata Sandi</a>
                     </div>
                 </div>
             </div>

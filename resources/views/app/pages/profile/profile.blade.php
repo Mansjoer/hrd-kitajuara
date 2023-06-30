@@ -42,7 +42,7 @@
                     </div>
                     <h4 class="subheader mt-4">Privasi</h4>
                     <div class="list-group list-group-transparent">
-                        <a href="javascript:void(0);" class="list-group-item list-group-item-action">Kata Sandi</a>
+                        <a href="{{ route('app-users-profile-change-password', $user->slug) }}" class="list-group-item list-group-item-action">Kata Sandi</a>
                     </div>
                 </div>
             </div>
@@ -50,20 +50,33 @@
                 <div class="card-body">
                     <h3 class="card-title">Foto Karyawan</h3>
                     <div class="row align-items-center mb-3">
+                        <form id="formUploadPhoto" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            <input name="image" type="file" id="inputUploadPhoto" accept="image/*" style="display: none;">
+                        </form>
                         <div class="col-auto">
                             @if ($user->employee->profile_path == null)
-                                <span class="avatar avatar-xl" style="background-image: url('https://app.kitajuara.co.id/custom/img/user-default.webp')"></span>
+                                <span class="avatar avatar-xl" id="avatarPlaceholder" style="background-image: url('https://app.kitajuara.co.id/custom/img/user-default.webp')"></span>
                             @else
-                                <span class="avatar avatar-xl" style="background-image: url('{{ $user->employee->profile_path }}')"></span>
+                                <span class="avatar avatar-xl" id="avatarPlaceholder" style="background-image: url('/{{ $user->employee->profile_path }}')"></span>
                             @endif
                         </div>
-                        <div class="col-auto"><a href="#" class="btn">
-                                Ubah Foto
+                        <div class="col-auto">
+                            <a class="btn" id="uploadPhoto">
+                                <span id="textUploadPhoto">Ubah Foto</span>
                             </a>
                         </div>
-                        <div class="col-auto"><a href="#" class="btn btn-ghost-danger">
-                                Hapus Foto
-                            </a></div>
+                        <div class="col-auto">
+                            @if ($user->employee->profile_path == null)
+                                <a class="btn btn-ghost-danger" id="deletePhoto" data-photo="https://app.kitajuara.co.id/custom/img/user-default.webp">
+                                    <span id="textDeletePhoto">Hapus Foto</span>
+                                </a>
+                            @else
+                                <a class="btn btn-ghost-danger" id="deletePhoto" data-photo="/{{ $user->employee->profile_path }}">
+                                    <span id="textDeletePhoto">Hapus Foto</span>
+                                </a>
+                            @endif
+                        </div>
                     </div>
                     <h3 class="card-title">Informasi Umum</h3>
                     <div class="datagrid mb-3">
@@ -174,4 +187,55 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('cscript')
+    <script>
+        $('#deletePhoto').on('click', function() {
+            var photo = $(this).data('photo');
+            $('#avatarPlaceholder').css('background-image', 'url("' + photo + '")');
+            $('#textUploadPhoto').text('Ubah Foto');
+        });
+
+        $('#uploadPhoto').on('click', function() {
+            if ($('#textUploadPhoto').text() === 'Simpan Foto') {
+                $('#formUploadPhoto').submit();
+                $('#textUploadPhoto').text('Ubah Foto');
+            } else {
+                $('#inputUploadPhoto').trigger('click');
+            }
+        });
+
+        $(document).on('submit', '#formUploadPhoto', function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                type: "POST",
+                url: document.URL + '/change-photo',
+                data: formData,
+                contentType: false,
+                cache: false,
+                processData: false,
+                dataType: "JSON",
+                success: function(response) {
+                    $('#deletePhoto').data('photo', response.data);
+                },
+                error: function(response) {
+                    console.log(response);
+                }
+            });
+        });
+
+        $('#inputUploadPhoto').on('change', function() {
+            var file = this.files[0];
+            var reader = new FileReader();
+            reader.onloadend = function() {
+                $('#avatarPlaceholder').css('background-image', 'url("' + reader.result + '")');
+                $('#textUploadPhoto').text('Simpan Foto');
+            }
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {}
+        });
+    </script>
 @endsection

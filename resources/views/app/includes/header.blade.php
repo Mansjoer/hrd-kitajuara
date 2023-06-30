@@ -70,15 +70,17 @@
             @if (Auth::check())
                 <div class="nav-item dropdown ms-3">
                     <a role="button" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                        <span class="avatar avatar-sm">
-                            <i class="ti ti-user icon"></i>
-                        </span>
+                        @if (Auth::user()->employee->profile_path == null)
+                            <span class="avatar avatar-sm" style="background-image: url('https://app.kitajuara.co.id/custom/img/user-default.webp')"></span>
+                        @else
+                            <span class="avatar avatar-sm" style="background-image: url('/{{ Auth::user()->employee->profile_path }}')"></span>
+                        @endif
                         <div class="d-none d-xl-block ps-2">
                             <div>{{ Auth::user()->name }}</div>
                         </div>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                        <a href="./profile.html" class="dropdown-item">Profile</a>
+                        <a href="{{ route('app-my-profile') }}" class="dropdown-item">Profile</a>
                         <a href="./settings.html" class="dropdown-item">Settings</a>
                         <div class="dropdown-divider"></div>
                         <a href="{{ route('app-auth-logout') }}" class="dropdown-item">Logout</a>
