@@ -30,6 +30,18 @@
         body {
             font-feature-settings: "cv03", "cv04", "cv11";
         }
+
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
     </style>
 </head>
 
@@ -79,9 +91,26 @@
             <!-- Page body -->
             <div class="page-body">
                 <div class="container-xl">
-                    @if (Auth::check())
+                    @if (Auth::check() && Auth::user()->isAdmin == 1)
                         @yield('content')
                         @yield('cmodal')
+                    @elseif(Auth::check() && Auth::user()->isAdmin == 0)
+                        <div class="empty">
+                            <div class="empty-img">
+                                <img src="{{ asset('app/assets/static/illustrations/undraw_sign_in_e6hj.svg') }}" height="250" alt="">
+                            </div>
+                            <p class="empty-title">{{ $site_setting['title']->value }}</p>
+                            <p class="empty-subtitle text-muted">
+                                Sepertinya kamu bukan admin. Silahkan login menggunakan akun admin.
+                            </p>
+                            <div class="empty-action">
+                                <a href="{{ route('app-auth-logout') }}" class="btn btn-ghost">
+                                    <i class="ti ti-login icon"></i>
+                                    Login
+                                </a>
+                            </div>
+                        </div>
+                        @include('app.modals.auth')
                     @else
                         <div class="empty">
                             <div class="empty-img">

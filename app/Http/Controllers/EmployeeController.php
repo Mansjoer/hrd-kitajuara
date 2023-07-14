@@ -7,10 +7,11 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\Branch;
 use App\Models\Employee;
-use App\Models\Position;
 use App\Models\Departement;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\SubDepartement;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
 {
@@ -20,12 +21,11 @@ class EmployeeController extends Controller
             $data = $request->search;
             $employees = Employee::join('users', 'employees.user_id', '=', 'users.id')
                 ->join('branches', 'employees.branch_id', '=', 'branches.id')
-                ->join('departements', 'employees.division_id', '=', 'departements.id')
-                ->join('positions', 'employees.position_id', '=', 'positions.id')
+                ->join('departements', 'employees.departement_id', '=', 'departements.id')
                 ->where('users.nik', 'LIKE', "%" . $request->search . "%")
                 ->orWhere('users.name', 'LIKE', "%" . $request->search . "%")
                 ->orWhere('branches.name', 'LIKE', "%" . $request->search . "%")
-                ->orWhere('positions.name', 'LIKE', "%" . $request->search . "%")
+                ->orWhere('position', 'LIKE', "%" . $request->search . "%")
                 ->orWhere('departements.name', 'LIKE', "%" . $request->search . "%")
                 ->paginate(10);
         } else {
@@ -39,9 +39,10 @@ class EmployeeController extends Controller
     {
         $branches = Branch::all();
         $departements = Departement::all();
-        $positions = Position::all();
         $roles = Role::all();
-        return view('app.pages.employees.create', compact('branches', 'departements', 'positions', 'roles'));
+        $subDepartements = SubDepartement::all();
+
+        return view('app.pages.employees.create', compact('branches', 'departements', 'roles', 'subDepartements'));
     }
 
     public function edit($slug)
@@ -49,14 +50,15 @@ class EmployeeController extends Controller
         $user = User::where('slug', $slug)->first();
         $branches = Branch::all();
         $departements = Departement::all();
-        $positions = Position::all();
+        $subDepartements = SubDepartement::all();
         $roles = Role::all();
-        return view('app.pages.employees.edit', compact('user', 'branches', 'departements', 'positions', 'roles'));
+        return view('app.pages.employees.edit', compact('user', 'branches', 'departements', 'roles', 'subDepartements'));
     }
 
     public function update(Request $request, $slug)
     {
         $user = User::where('slug', $slug)->first();
+
         $user->update([
             'nik' => $request->nik,
             'name' => $request->name,
@@ -67,24 +69,32 @@ class EmployeeController extends Controller
         ]);
         $user->employee->update([
             'nik' => $request->nik,
+            'name' => $request->name,
+            'username' => $request->username,
             'phone' => $request->phone,
-            'gender' => $request->gender,
             'religion' => $request->religion,
+            'gender' => $request->gender,
+            'marital_status' => $request->maritalStatus,
             'place_of_birth' => $request->placeBirth,
             'date_of_birth' => $request->dateBirth,
             'address' => $request->address,
             'address2' => $request->address2,
             'ktp' => $request->ktp,
             'npwp' => $request->npwp,
+            'bpjs' => $request->bpjs,
+            'bpjamsostek' => $request->bpjamsostek,
             'bank' => $request->bank,
             'bank_number' => $request->bank_number,
+            'position' => $request->position,
+            'departement_id' => $request->departement,
+            'sub_departement_id' => $request->subDepartement,
+            'company' => $request->company,
             'branch_id' => $request->branch,
-            'division_id' => $request->departement,
-            'position_id' => $request->position,
             'joined_at' => $request->joined_at,
             'status' => $request->status,
-            'period' => $request->period,
-            'slug' => Str::slug($request->nik, '-')
+            'start_contract_at' => $request->start_contract_at,
+            'end_contract_at' => $request->end_contract_at,
+            'slug' => Str::slug($request->name, '-')
         ]);
         return redirect()->route('app-employees-edit', Str::slug($request->name, '-'))->with('success', 'success');
     }
@@ -93,37 +103,47 @@ class EmployeeController extends Controller
     public function postcreate(Request $request)
     {
         $users = new User();
-        $users->nik = 'DBH' . $request->nik;
+        $users->nik = $request->nik;
         $users->name = $request->name;
         $users->email = $request->email . '@dbeautyhouse.co.id';
         $users->password = bcrypt(123456);
-        $users->role_id = $request->role;
-        $users->isAdmin = $request->isAdmin;
+        $users->role_id = 1;
+        $users->isAdmin = 0;
         $users->slug = Str::slug($request->name, '-');
         $users->save();
 
         $em = new Employee();
-        $em->nik = 'DBH' . $request->nik;
+        $em->nik = $request->nik;
+        $em->name = $request->name;
+        $em->username = $request->username;
         $em->phone = $request->phone;
+        $em->religion = $request->religion;
+        $em->gender = $request->gender;
+        $em->marital_status = $request->maritalStatus;
+        $em->place_of_birth = $request->placeBirth;
+        $em->date_of_birth = Carbon::parse($request->dateBirth)->format('Y-m-d');
         $em->address = $request->address;
         $em->address2 = $request->address2;
-        $em->gender = $request->gender;
-        $em->religion = $request->religion;
-        $em->place_of_birth = $request->placeBirth;
-        $em->date_of_birth = date('Y-m-d', strtotime($request->dateBirth));
         $em->ktp = $request->ktp;
         $em->npwp = $request->npwp;
+        $em->bpjs = $request->bpjs;
+        $em->bpjamsostek = $request->bpjamsostek;
         $em->bank = $request->bank;
         $em->bank_number = $request->bank_number;
+        $em->position = $request->position;
+        $em->departement_id = $request->departement;
+        $em->sub_departement_id = $request->subDepartement;
+        $em->company = $request->company;
         $em->branch_id = $request->branch;
-        $em->division_id = $request->departement;
-        $em->position_id = $request->position;
-        $em->joined_at = date('Y-m-d', strtotime($request->joined_at));
+        $em->joined_at = Carbon::parse($request->joined_at)->format('Y-m-d');
         $em->status = $request->status;
-        $em->period = $request->period;
+        $em->start_contract_at = Carbon::parse($request->start_contract_at)->format('Y-m-d');
+        $em->end_contract_at = Carbon::parse($request->end_contract_at)->format('Y-m-d');
         $em->user_id = $users->id;
-        $em->slug = Str::slug($request->nik, '-');
+        $em->slug = Str::slug($request->name, '-');
         $em->save();
+        // dd($em);
+
 
         return redirect()->route('app-employees');
     }

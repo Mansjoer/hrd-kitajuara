@@ -9,10 +9,10 @@
         <div class="col">
             <!-- Page pre-title -->
             <div class="page-pretitle">
-                App / Karyawan / {{ $user->name }}
+                App / Karyawan / Profile
             </div>
             <h2 class="page-title">
-                Biodata
+                {{ $user->name }}
             </h2>
         </div>
         <div class="col-auto ms-auto d-print-none">
@@ -49,13 +49,21 @@
             <div class="col d-flex flex-column">
                 <div class="card-body">
                     <h3 class="card-title">Foto Karyawan</h3>
+                    <div class="alert alert-success alert-dismissible" role="alert" style="display: none;">
+                        <div class="d-flex">
+                            <div>
+                                <strong>Sukses!</strong> foto karyawan berhasil di ubah.
+                            </div>
+                        </div>
+                        <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
+                    </div>
                     <div class="row align-items-center mb-3">
                         <form id="formUploadPhoto" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <input name="image" type="file" id="inputUploadPhoto" accept="image/*" style="display: none;">
                         </form>
                         <div class="col-auto">
-                            @if ($user->employee->profile_path == null)
+                            @if (is_null($user->employee->profile_path))
                                 <span class="avatar avatar-xl" id="avatarPlaceholder" style="background-image: url('https://app.kitajuara.co.id/custom/img/user-default.webp')"></span>
                             @else
                                 <span class="avatar avatar-xl" id="avatarPlaceholder" style="background-image: url('/{{ $user->employee->profile_path }}')"></span>
@@ -67,12 +75,12 @@
                             </a>
                         </div>
                         <div class="col-auto">
-                            @if ($user->employee->profile_path == null)
-                                <a class="btn btn-ghost-danger" id="deletePhoto" data-photo="https://app.kitajuara.co.id/custom/img/user-default.webp">
+                            @if (is_null($user->employee->profile_path))
+                                <a class="btn btn-ghost-danger" id="deletePhoto" data-photo="https://app.kitajuara.co.id/custom/img/user-default.webp" style="display: none;">
                                     <span id="textDeletePhoto">Hapus Foto</span>
                                 </a>
                             @else
-                                <a class="btn btn-ghost-danger" id="deletePhoto" data-photo="/{{ $user->employee->profile_path }}">
+                                <a class="btn btn-ghost-danger" id="deletePhoto" data-photo="/{{ $user->employee->profile_path }}" style="display: none;">
                                     <span id="textDeletePhoto">Hapus Foto</span>
                                 </a>
                             @endif
@@ -86,7 +94,11 @@
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Nama</div>
-                            <div class="datagrid-content">{{ $user->name }}</div>
+                            <div class="datagrid-content">{{ $user->employee->name }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">Nama Panggilan</div>
+                            <div class="datagrid-content">{{ $user->employee->username }}</div>
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">No Handphone</div>
@@ -146,15 +158,11 @@
                     <div class="datagrid mb-3">
                         <div class="datagrid-item">
                             <div class="datagrid-title">Cabang</div>
-                            <div class="datagrid-content">{{ $user->employee->branch->name ? $user->employee->branch->name : '-' }}</div>
+                            <div class="datagrid-content">{{ $user->employee->branch ? $user->employee->branch->name : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Departemen</div>
-                            <div class="datagrid-content">{{ $user->employee->departement->name ? $user->employee->departement->name : '-' }}</div>
-                        </div>
-                        <div class="datagrid-item">
-                            <div class="datagrid-title">Jabatan</div>
-                            <div class="datagrid-content">{{ $user->employee->position->name ? $user->employee->position->name : '-' }}</div>
+                            <div class="datagrid-content">{{ $user->employee->departement ? $user->employee->departement->name : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Tanggal Masuk</div>
@@ -195,6 +203,8 @@
             var photo = $(this).data('photo');
             $('#avatarPlaceholder').css('background-image', 'url("' + photo + '")');
             $('#textUploadPhoto').text('Ubah Foto');
+            $('#uploadPhoto').removeClass('btn-outline-success');
+            $(this).hide();
         });
 
         $('#uploadPhoto').on('click', function() {
@@ -218,7 +228,11 @@
                 processData: false,
                 dataType: "JSON",
                 success: function(response) {
+                    $('.avatar').css('background-image', 'url("' + response.data + '")');
                     $('#deletePhoto').data('photo', response.data);
+                    $('#deletePhoto').hide();
+                    $('#uploadPhoto').removeClass('btn-outline-success');
+                    $('.alert').fadeIn('slow').delay(2000).fadeOut('slow');
                 },
                 error: function(response) {
                     console.log(response);
@@ -231,6 +245,8 @@
             var reader = new FileReader();
             reader.onloadend = function() {
                 $('#avatarPlaceholder').css('background-image', 'url("' + reader.result + '")');
+                $('#uploadPhoto').addClass('btn-outline-success');
+                $('#deletePhoto').show();
                 $('#textUploadPhoto').text('Simpan Foto');
             }
             if (file) {

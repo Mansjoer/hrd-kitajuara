@@ -53,7 +53,6 @@ class ProfileController extends Controller
     public function profile(Request $request, $slug)
     {
         $user = User::where('slug', $slug)->first();
-
         return view('app.pages.profile.profile', compact('user'));
     }
 

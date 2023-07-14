@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Employee;
 use Illuminate\Support\Str;
@@ -22,44 +23,52 @@ class EmployeesImport implements ToCollection, WithHeadingRow
             $user = User::updateOrCreate([
                 'nik' => $row['nik'],
                 'email' => $row['email'],
-                'slug' => Str::slug($row['nama'], '-')
+                'slug' => Str::slug($row['nama_karyawan'], '-')
             ], [
                 'nik' => $row['nik'],
-                'name' => $row['nama'],
+                'name' => $row['nama_karyawan'],
                 'email' => $row['email'],
                 'password' => bcrypt('123456'),
                 'role_id' => 1,
-                'isAdmin' => 0,
-                'slug' => Str::slug($row['nama'], '-')
+                'isAdmin' => 1,
+                'slug' => Str::slug($row['nama_karyawan'], '-')
             ]);
             $user->save();
 
             $employee = Employee::updateOrCreate([
                 'nik' => $row['nik'],
                 'user_id' => $user->id,
-                'slug' => Str::slug($row['nik'], '-')
+                'slug' => Str::slug($row['nama_karyawan'], '-')
             ], [
                 'nik' => $row['nik'],
-                'phone' => $row['no_handphone'],
-                'address' => $row['alamat_ktp'],
-                'address2' => $row['alamat_domisili'],
-                'education' => $row['edukasi'],
-                'gender' => $row['kelamin'],
-                'religion' => $row['agama'],
+                'name' => $row['nama_karyawan'],
+                'username' => $row['nama_panggilan'],
                 'place_of_birth' => $row['tempat_lahir'],
-                'date_of_birth' => $row['tanggal_lahir'],
-                'joined_at' => $row['tanggal_masuk'],
-                'status' => $row['status'],
-                'period' => intval(preg_replace('/[^0-9]+/', '', $row['periode']), 10),
-                'ktp' => $row['ktp'],
-                'npwp' => $row['npwp'],
-                'bank' => $row['bank'],
-                'bank_number' => $row['no_rekening'],
+                'date_of_birth' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tanggal_lahir']),
+                'gender' => $row['jenis_kelamin'],
+                'marital_status' => $row['status_pernikahan'],
+                'religion' => $row['agama'],
+                'joined_at' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tanggal_masuk_kerja']),
+                'status' => $row['status_kerja'],
+                'start_contract_at' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tanggal_kontrak_awal']),
+                'end_contract_at' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tanggal_kontrak_berakhir']),
+                'phone' => $row['nomor_handphone'],
+                'address' => $row['alamat_sesuai_ktp'],
+                'address2' => $row['alamat_domisili'],
+                'education' => $row['pendidikan_terakhir'],
+                'ktp' => $row['nomor_ktp'],
+                'npwp' => $row['nomor_pokok_wajib_pajak'],
+                'bpjs' => $row['nomor_bpjs_kesehatan'],
+                'bpjamsostek' => $row['nomor_bpjamsostek'],
+                'bank' => $row['nama_bank'],
+                'bank_number' => $row['nomor_rekening_bank'],
                 'pin' => 1234,
                 'user_id' => $user->id,
-                'slug' => Str::slug($row['nik'], '-')
+                'slug' => Str::slug($row['nama_karyawan'], '-')
             ]);
             $employee->save();
+
+            // dd($employee);
         }
 
         return 'success';

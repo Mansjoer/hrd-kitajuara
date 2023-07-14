@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Role;
 use App\Models\Employee;
+use App\Models\Submission;
 use App\Models\UserAttendance;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -28,7 +29,7 @@ class User extends Authenticatable
         'role_id',
         'isAdmin',
         'email',
-        'slug'
+        'slug',
     ];
 
     /**
@@ -68,5 +69,10 @@ class User extends Authenticatable
     public function announcement()
     {
         return $this->hasMany(Announcement::class);
+    }
+
+    public function submission()
+    {
+        return $this->hasMany(Submission::class);
     }
 }

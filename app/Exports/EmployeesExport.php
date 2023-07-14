@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use Carbon\Carbon;
 use App\Models\Employee;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -22,26 +23,28 @@ class EmployeesExport implements FromCollection, WithHeadings, WithMapping, Shou
     {
         return [
             'NIK',
-            'Nama',
-            'Email',
-            'No Handphone',
-            'Alamat_KTP',
-            'Alamat_Domisili',
-            'Edukasi',
-            'Kelamin',
-            'Agama',
-            'Tempat_Lahir',
-            'Tanggal_Lahir',
-            'Tanggal_Masuk',
-            'Status',
-            'Periode',
-            'KTP',
-            'NPWP',
-            'Bank',
-            'No_Rekening',
-            'Cabang',
-            'Departemen',
-            'Jabatan',
+            'NAMA_KARYAWAN',
+            'NAMA_PANGGILAN',
+            'TEMPAT_LAHIR',
+            'TANGGAL_LAHIR',
+            'JENIS_KELAMIN',
+            'STATUS_PERNIKAHAN',
+            'AGAMA',
+            'TANGGAL_MASUK_KERJA',
+            'STATUS_KERJA',
+            'TANGGAL_KONTRAK_AWAL',
+            'TANGGAL_KONTRAK_BERAKHIR',
+            'NOMOR_HANDPHONE',
+            'EMAIL',
+            'ALAMAT_SESUAI_KTP',
+            'ALAMAT_DOMISILI',
+            'PENDIDIKAN_TERAKHIR',
+            'NOMOR_KTP',
+            'NOMOR_POKOK_WAJIB_PAJAK',
+            'NOMOR_BPJS_KESEHATAN',
+            'NOMOR_BPJAMSOSTEK',
+            'NAMA_BANK',
+            'NOMOR_REKENING_BANK',
         ];
     }
 
@@ -59,33 +62,36 @@ class EmployeesExport implements FromCollection, WithHeadings, WithMapping, Shou
             $departement = '-';
         }
 
-        if ($employee->position != null) {
-            $position =  $employee->position->name;
+        if ($employee->subDepartement != null) {
+            $subDepartement = $employee->subDepartement->name;
         } else {
-            $position = '-';
+            $subDepartement = '-';
         }
+
         return [
             $employee->nik,
-            $employee->user->name,
-            $employee->user->email,
+            $employee->name,
+            $employee->username,
+            $employee->place_of_birth,
+            Carbon::parse($employee->date_of_birth,)->translatedFormat('d/m/Y'),
+            $employee->gender,
+            $employee->marital_status,
+            $employee->religion,
+            Carbon::parse($employee->joined_at,)->translatedFormat('d/m/Y'),
+            $employee->status,
+            Carbon::parse($employee->start_contract_at,)->translatedFormat('d/m/Y'),
+            Carbon::parse($employee->end_contract_at,)->translatedFormat('d/m/Y'),
             $employee->phone,
+            $employee->user->email,
             $employee->address,
             $employee->address2,
             $employee->education,
-            $employee->gender,
-            $employee->religion,
-            $employee->place_of_birth,
-            $employee->date_of_birth,
-            $employee->joined_at,
-            $employee->status,
-            $employee->period . ' Bulan',
             $employee->ktp,
             $employee->npwp,
+            $employee->bpjs,
+            $employee->bpjamsostek,
             $employee->bank,
             $employee->bank_number,
-            $branch,
-            $departement,
-            $position
         ];
     }
 }

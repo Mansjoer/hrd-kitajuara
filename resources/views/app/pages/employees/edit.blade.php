@@ -1,7 +1,7 @@
 @extends('app.layouts.master')
 
 @section('title')
-    Lihat Karyawan
+    Ubah Karyawan
 @endsection
 
 @section('breadcumb')
@@ -9,7 +9,7 @@
         <div class="col">
             <!-- Page pre-title -->
             <div class="page-pretitle">
-                App / Karyawan
+                App / Karyawan / Edit
             </div>
             <h2 class="page-title">
                 {{ $user->name }}
@@ -18,13 +18,23 @@
         <!-- Page title actions -->
         <div class="col-auto ms-auto d-print-none">
             <div class="btn-list">
-                <a href="{{ route('app-employees') }}" class="btn btn-primary d-none d-sm-inline-block">
-                    <i class="ti ti-arrow-narrow-left icon"></i>
-                    Kembali
-                </a>
-                <a href="{{ route('app-employees') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="Kembali">
-                    <i class="ti ti-arrow-narrow-left icon"></i>
-                </a>
+                @if (Auth::user()->id == $user->id)
+                    <a href="{{ route('app-my-profile') }}" class="btn btn-primary d-none d-sm-inline-block">
+                        <i class="ti ti-arrow-narrow-left icon"></i>
+                        Kembali
+                    </a>
+                    <a href="{{ route('app-my-profile') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="Kembali">
+                        <i class="ti ti-arrow-narrow-left icon"></i>
+                    </a>
+                @else
+                    <a href="{{ route('app-employees') }}" class="btn btn-primary d-none d-sm-inline-block">
+                        <i class="ti ti-arrow-narrow-left icon"></i>
+                        Kembali
+                    </a>
+                    <a href="{{ route('app-employees') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="Kembali">
+                        <i class="ti ti-arrow-narrow-left icon"></i>
+                    </a>
+                @endif
             </div>
         </div>
     </div>
@@ -188,17 +198,6 @@
                                             <option value=""></option>
                                             @foreach ($departements as $departement)
                                                 <option value="{{ $departement->id }}" {{ $user->employee->division_id == $departement->id ? 'selected' : '' }}>{{ $departement->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label class="form-label">Jabatan</label>
-                                        <select name="position" type="text" class="form-select tomSelect" placeholder="Pilih jabatan...">
-                                            <option value=""></option>
-                                            @foreach ($positions as $position)
-                                                <option value="{{ $position->id }}" {{ $user->employee->position_id == $position->id ? 'selected' : '' }}>{{ $position->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>

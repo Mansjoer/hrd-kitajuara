@@ -20,15 +20,16 @@
             <div class="btn-list">
                 <button class="btn btn-outline-lime d-none d-sm-inline-block me-1" data-bs-toggle="modal" data-bs-target="#modalImportEmployees">
                     <i class="ti ti-cloud-upload icon"></i>
-                    Import
+                    Upload
                 </button>
                 <div class="dropdown me-1 d-none d-md-block">
                     <a href="#" class="btn btn-outline-teal dropdown-toggle" data-bs-toggle="dropdown">
                         <i class="ti ti-cloud-download icon"></i>
-                        Export
+                        Download
                     </a>
                     <div class="dropdown-menu">
                         {{-- <a class="dropdown-item" href="{{ route('app-export-pdf-employees') }}">PDF</a> --}}
+                        <a class="dropdown-item" href="{{ route('app-export-csv-employees') }}">Format / Template</a>
                         <a class="dropdown-item" href="{{ route('app-export-csv-employees') }}">Csv</a>
                         <a class="dropdown-item" href="{{ route('app-export-excel-employees') }}">Excel</a>
                     </div>
@@ -89,7 +90,7 @@
                                     @endif
 
                                     @if ($employee->position != null)
-                                        <td class="sort-jabatan">{{ $employee->position->name }}</td>
+                                        <td class="sort-jabatan">{{ $employee->position }}</td>
                                     @else
                                         <td class="sort-jabatan">-</td>
                                     @endif
@@ -101,6 +102,14 @@
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                     <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
                                                     <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"></path>
+                                                </svg>
+                                            </a>
+                                            <a href="{{ route('app-employees-edit', $employee->user->slug) }}" class="text-warning me-2" aria-label="Ubah">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                                                    <path d="M16 5l3 3"></path>
                                                 </svg>
                                             </a>
                                         </td>

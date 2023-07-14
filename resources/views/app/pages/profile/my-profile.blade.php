@@ -9,11 +9,32 @@
         <div class="col">
             <!-- Page pre-title -->
             <div class="page-pretitle">
-                App / My Profile / Umum
+                App / Karyawan
             </div>
             <h2 class="page-title">
-                Biodata
+                My Profile
             </h2>
+        </div>
+        <div class="col-auto ms-auto d-print-none">
+            <div class="btn-list">
+                <a href="{{ route('app-employees') }}" class="btn btn-primary d-none d-sm-inline-block">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                        <path d="M16 5l3 3"></path>
+                    </svg>
+                    Ubah
+                </a>
+                <a href="{{ route('app-employees') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="Kembali">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                        <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                        <path d="M16 5l3 3"></path>
+                    </svg>
+                </a>
+            </div>
         </div>
     </div>
 @endsection
@@ -63,11 +84,11 @@
                         </div>
                         <div class="col-auto">
                             @if (Auth::user()->employee->profile_path == null)
-                                <a class="btn btn-ghost-danger" id="deletePhoto" data-photo="https://app.kitajuara.co.id/custom/img/user-default.webp">
+                                <a class="btn btn-ghost-danger" id="deletePhoto" data-photo="https://app.kitajuara.co.id/custom/img/user-default.webp" style="display: none;">
                                     <span id="textDeletePhoto">Hapus Foto</span>
                                 </a>
                             @else
-                                <a class="btn btn-ghost-danger" id="deletePhoto" data-photo="{{ Auth::user()->employee->profile_path }}">
+                                <a class="btn btn-ghost-danger" id="deletePhoto" data-photo="{{ Auth::user()->employee->profile_path }}" style="display: none;">
                                     <span id="textDeletePhoto">Hapus Foto</span>
                                 </a>
                             @endif
@@ -84,12 +105,20 @@
                             <div class="datagrid-content">{{ Auth::user()->name }}</div>
                         </div>
                         <div class="datagrid-item">
-                            <div class="datagrid-title">No Handphone</div>
-                            <div class="datagrid-content">{{ Auth::user()->employee->phone ? Auth::user()->employee->phone : '-' }}</div>
+                            <div class="datagrid-title">Nama Panggilan</div>
+                            <div class="datagrid-content">{{ Auth::user()->employee->username }}</div>
                         </div>
                         <div class="datagrid-item">
-                            <div class="datagrid-title">Umur</div>
-                            <div class="datagrid-content">{{ \Carbon\Carbon::parse(Auth::user()->employee->date_of_birth)->age }}</div>
+                            <div class="datagrid-title">Status Pernikahan</div>
+                            <div class="datagrid-content">{{ Auth::user()->employee->marital_status ? Auth::user()->employee->marital_status : '-' }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">Pendidikan Terakhir</div>
+                            <div class="datagrid-content">{{ Auth::user()->employee->education ? Auth::user()->employee->education : '-' }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">No Handphone</div>
+                            <div class="datagrid-content">{{ Auth::user()->employee->phone ? Auth::user()->employee->phone : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Tempat Lahir</div>
@@ -97,7 +126,11 @@
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Tanggal Lahir</div>
-                            <div class="datagrid-content">{{ Auth::user()->employee->date_of_birth ? Auth::user()->employee->date_of_birth : '-' }}</div>
+                            <div class="datagrid-content">{{ Auth::user()->employee->date_of_birth ? \Carbon\Carbon::parse(Auth::user()->employee->date_of_birth)->translatedFormat('d F, Y') : '-' }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">Umur</div>
+                            <div class="datagrid-content">{{ \Carbon\Carbon::parse(Auth::user()->employee->date_of_birth)->age }}</div>
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Agama</div>
@@ -120,11 +153,19 @@
                     <h3 class="card-title">Informasi Personal</h3>
                     <div class="datagrid mb-3">
                         <div class="datagrid-item">
-                            <div class="datagrid-title">KTP</div>
+                            <div class="datagrid-title">Nomor KTP</div>
                             <div class="datagrid-content">{{ Auth::user()->employee->ktp ? Auth::user()->employee->ktp : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
-                            <div class="datagrid-title">NPWP</div>
+                            <div class="datagrid-title">Nomor NPWP</div>
+                            <div class="datagrid-content">{{ Auth::user()->employee->npwp ? Auth::user()->employee->npwp : '-' }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">Nomor BPJS</div>
+                            <div class="datagrid-content">{{ Auth::user()->employee->ktp ? Auth::user()->employee->ktp : '-' }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">Nomor BPJAMSOSTEK</div>
                             <div class="datagrid-content">{{ Auth::user()->employee->npwp ? Auth::user()->employee->npwp : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
@@ -141,31 +182,35 @@
                     <div class="datagrid mb-3">
                         <div class="datagrid-item">
                             <div class="datagrid-title">Cabang</div>
-                            <div class="datagrid-content">{{ Auth::user()->employee->branch->name ? Auth::user()->employee->branch->name : '-' }}</div>
-                        </div>
-                        <div class="datagrid-item">
-                            <div class="datagrid-title">Departemen</div>
-                            <div class="datagrid-content">{{ Auth::user()->employee->departement->name ? Auth::user()->employee->departement->name : '-' }}</div>
-                        </div>
-                        <div class="datagrid-item">
-                            <div class="datagrid-title">Jabatan</div>
-                            <div class="datagrid-content">{{ Auth::user()->employee->position->name ? Auth::user()->employee->position->name : '-' }}</div>
+                            <div class="datagrid-content">{{ Auth::user()->employee->branch ? Auth::user()->employee->branch->name : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Tanggal Masuk</div>
-                            <div class="datagrid-content">{{ Auth::user()->employee->joined_at ? Auth::user()->employee->joined_at : '-' }}</div>
+                            <div class="datagrid-content">{{ Auth::user()->employee->joined_at ? \Carbon\Carbon::parse(Auth::user()->employee->joined_at)->translatedFormat('d F, Y') : '-' }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">Lama Bekerja</div>
+                            <div class="datagrid-content">{{ \Carbon\Carbon::parse(Auth::user()->employee->joined_at)->diff(\Carbon\Carbon::now())->format('%y Tahun, %m Bulan %d Hari') }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">Departemen</div>
+                            <div class="datagrid-content">{{ Auth::user()->employee->departement ? Auth::user()->employee->departement->name : '-' }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">Sub Departemen</div>
+                            <div class="datagrid-content">{{ Auth::user()->employee->subDepartement ? Auth::user()->employee->subDepartement->name : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Status</div>
                             <div class="datagrid-content">{{ Auth::user()->employee->status ? Auth::user()->employee->status : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
-                            <div class="datagrid-title">Periode</div>
-                            <div class="datagrid-content">{{ Auth::user()->employee->period ? Auth::user()->employee->period . ' Bulan' : '-' }}</div>
+                            <div class="datagrid-title">Tanggal Kontrak Awal</div>
+                            <div class="datagrid-content">{{ Auth::user()->employee->start_contract_at ? \Carbon\Carbon::parse(Auth::user()->employee->start_contract_at)->translatedFormat('d F, Y') : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
-                            <div class="datagrid-title">Lama Bekerja</div>
-                            <div class="datagrid-content">{{ \Carbon\Carbon::parse(Auth::user()->employee->joined_at)->diff(\Carbon\Carbon::now())->format('%y Tahun, %m Bulan %d Hari') }}</div>
+                            <div class="datagrid-title">Tanggal Kontrak Berakhir</div>
+                            <div class="datagrid-content">{{ Auth::user()->employee->end_contract_at ? \Carbon\Carbon::parse(Auth::user()->employee->end_contract_at)->translatedFormat('d F, Y') : '-' }}</div>
                         </div>
                     </div>
                 </div>
@@ -190,6 +235,8 @@
             var photo = $(this).data('photo');
             $('#avatarPlaceholder').css('background-image', 'url("' + photo + '")');
             $('#textUploadPhoto').text('Ubah Foto');
+            $('#uploadPhoto').removeClass('btn-outline-success');
+            $(this).hide();
         });
 
         $('#uploadPhoto').on('click', function() {
@@ -215,6 +262,8 @@
                 success: function(response) {
                     $('.avatar').css('background-image', 'url("' + response.data + '")');
                     $('#deletePhoto').data('photo', response.data);
+                    $('#deletePhoto').hide();
+                    $('#uploadPhoto').removeClass('btn-outline-success');
                     $('.alert').fadeIn('slow').delay(2000).fadeOut('slow');
                 },
                 error: function(response) {
@@ -228,6 +277,8 @@
             var reader = new FileReader();
             reader.onloadend = function() {
                 $('#avatarPlaceholder').css('background-image', 'url("' + reader.result + '")');
+                $('#uploadPhoto').addClass('btn-outline-success');
+                $('#deletePhoto').show();
                 $('#textUploadPhoto').text('Simpan Foto');
             }
             if (file) {
