@@ -33,7 +33,7 @@ class EmployeesImport implements ToCollection, WithHeadingRow
                 'isAdmin' => 1,
                 'slug' => Str::slug($row['nama_karyawan'], '-')
             ]);
-            $user->save();
+            // $user->save();
 
             $employee = Employee::updateOrCreate([
                 'nik' => $row['nik'],
@@ -66,9 +66,9 @@ class EmployeesImport implements ToCollection, WithHeadingRow
                 'user_id' => $user->id,
                 'slug' => Str::slug($row['nama_karyawan'], '-')
             ]);
-            $employee->save();
+            // $employee->save();
 
-            // dd($employee);
+            dd($employee);
         }
 
         return 'success';
