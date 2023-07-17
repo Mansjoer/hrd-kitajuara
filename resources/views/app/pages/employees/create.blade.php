@@ -361,6 +361,12 @@
             element: document.getElementById('datepicker'),
             format: 'D MMMM YYYY',
             lang: 'id-ID',
+            dropdowns: {
+                minYear: new Date().getFullYear() - 80,
+                maxYear: new Date().getFullYear() + 5,
+                months: true,
+                years: true
+            },
             buttonText: {
                 previousMonth: '<i role="button" class="ti ti-arrow-narrow-left icon"></i>',
                 nextMonth: '<i role="button" class="ti ti-arrow-narrow-right icon"></i>',
@@ -370,6 +376,12 @@
             element: document.getElementById('datepicker2'),
             format: 'D MMMM YYYY',
             lang: 'id-ID',
+            dropdowns: {
+                minYear: new Date().getFullYear() - 80,
+                maxYear: new Date().getFullYear() + 5,
+                months: true,
+                years: true
+            },
             buttonText: {
                 previousMonth: '<i role="button" class="ti ti-arrow-narrow-left icon"></i>',
                 nextMonth: '<i role="button" class="ti ti-arrow-narrow-right icon"></i>',
@@ -379,6 +391,12 @@
             element: document.getElementById('datepicker3'),
             format: 'D MMMM YYYY',
             lang: 'id-ID',
+            dropdowns: {
+                minYear: new Date().getFullYear() - 80,
+                maxYear: new Date().getFullYear() + 5,
+                months: true,
+                years: true
+            },
             buttonText: {
                 previousMonth: '<i role="button" class="ti ti-arrow-narrow-left icon"></i>',
                 nextMonth: '<i role="button" class="ti ti-arrow-narrow-right icon"></i>',
@@ -389,6 +407,12 @@
             element: document.getElementById('datepicker4'),
             format: 'D MMMM YYYY',
             lang: 'id-ID',
+            dropdowns: {
+                minYear: new Date().getFullYear() - 80,
+                maxYear: new Date().getFullYear() + 5,
+                months: true,
+                years: true
+            },
             buttonText: {
                 previousMonth: '<i role="button" class="ti ti-arrow-narrow-left icon"></i>',
                 nextMonth: '<i role="button" class="ti ti-arrow-narrow-right icon"></i>',

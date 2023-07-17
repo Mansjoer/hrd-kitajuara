@@ -69,14 +69,14 @@ class EmployeeController extends Controller
         $user = User::where('slug', $slug)->first();
 
         $user->update([
-            'nik' => $request->nik,
+            'nik' => strtoupper($request->nik),
             'name' => $request->name,
             'email' => $request->email . '@dbeautyhouse.co.id',
             'isAdmin' => $request->isAdmin,
             'slug' => Str::slug($request->name, '-')
         ]);
         $user->employee->update([
-            'nik' => $request->nik,
+            'nik' => strtoupper($request->nik),
             'name' => $request->name,
             'username' => $request->username,
             'phone' => $request->phone,
