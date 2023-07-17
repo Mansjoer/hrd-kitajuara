@@ -13,7 +13,7 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="javascript:void(0);">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <i class="ti ti-calendar-stats icon"></i>
@@ -22,7 +22,7 @@
                                 Kehadiran
                             </span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item {{ (Request::is('employees*') ? 'active' : '' || Request::is('users*')) ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('app-employees') }}">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -33,8 +33,8 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item {{ Request::is('structure*') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('app-structure') }}">
+                    <li class="nav-item {{ Request::is('structural*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('app-structural') }}">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <i class="ti ti-briefcase icon"></i>
                             </span>
@@ -53,7 +53,7 @@
                             </span>
                         </a>
                     </li>
-                    @if (Auth::user()->isAdmin == 1)
+                    {{-- @if (Auth::user()->isAdmin == 1)
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -74,7 +74,7 @@
                                 </a>
                             </div>
                         </li>
-                    @endif
+                    @endif --}}
                 </ul>
                 {{-- <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
                     <form action="" method="GET" autocomplete="off" novalidate spellcheck="false" autocomplete="off">

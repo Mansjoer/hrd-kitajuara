@@ -18,23 +18,13 @@
         <!-- Page title actions -->
         <div class="col-auto ms-auto d-print-none">
             <div class="btn-list">
-                @if (Auth::user()->id == $user->id)
-                    <a href="{{ route('app-my-profile') }}" class="btn btn-primary d-none d-sm-inline-block">
-                        <i class="ti ti-arrow-narrow-left icon"></i>
-                        Kembali
-                    </a>
-                    <a href="{{ route('app-my-profile') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="Kembali">
-                        <i class="ti ti-arrow-narrow-left icon"></i>
-                    </a>
-                @else
-                    <a href="{{ route('app-employees') }}" class="btn btn-primary d-none d-sm-inline-block">
-                        <i class="ti ti-arrow-narrow-left icon"></i>
-                        Kembali
-                    </a>
-                    <a href="{{ route('app-employees') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="Kembali">
-                        <i class="ti ti-arrow-narrow-left icon"></i>
-                    </a>
-                @endif
+                <a href="{{ route('app-employees') }}" class="btn btn-primary d-none d-sm-inline-block">
+                    <i class="ti ti-arrow-narrow-left icon"></i>
+                    Kembali
+                </a>
+                <a href="{{ route('app-employees') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="Kembali">
+                    <i class="ti ti-arrow-narrow-left icon"></i>
+                </a>
             </div>
         </div>
     </div>
@@ -52,7 +42,7 @@
         </div>
     @endif
 
-    <form action="{{ route('app-employees-update', $user->slug) }}" method="POST" spellcheck="false" autocomplete="off">
+    <form action="{{ route('app-employees-update', $user->slug) }}" method="POST" spellcheck="false" autocomplete="off" id="formKaryawan">
         {{ csrf_field() }}
         <div class="row">
             <div class="col-lg-8">
@@ -60,35 +50,46 @@
                     <div class="card-body">
                         <h3 class="card-title">Informasi Umum</h3>
                         <div class="row row-cards">
-                            <div class="col-lg-4">
-                                <div class="mb-3">
-                                    <label class="form-label">Nama Karyawan</label>
-                                    <input type="text" class="form-control" name="name" value="{{ $user->name }}" />
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="mb-3">
-                                    <label class="form-label">Email</label>
-                                    <input type="text" name="email" class="form-control" value="{{ $user->email }}" />
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="mb-3">
-                                    <label class="form-label">No Handphone</label>
-                                    <input type="text" class="form-control" name="phone" value="{{ $user->employee->phone }}" />
-                                </div>
-                            </div>
                             <div class="col-lg-2">
                                 <div class="mb-3">
                                     <label class="form-label">NIK</label>
-                                    <input name="nik" type="text" class="form-control" placeholder="0000" value="{{ $user->nik }}" readonly />
+                                    <input name="nik" type="text" class="form-control" placeholder="" autocomplete="off" value="{{ $user->nik }}" style="text-transform: uppercase;" />
                                 </div>
                             </div>
                             <div class="col-lg-5">
                                 <div class="mb-3">
+                                    <label class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control" name="name" placeholder="" value="{{ $user->employee->name }}" />
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="mb-3">
+                                    <label class="form-label">Nama Panggilan</label>
+                                    <input type="text" class="form-control" name="username" placeholder="" value="{{ $user->employee->username }}" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Email</label>
+                                    <div class="input-group input-group-flat">
+                                        <input type="text" name="email" class="form-control text-end pe-0" value="{{ strstr($user->email, '@', true) }}" autocomplete="off" />
+                                        <span class="input-group-text">
+                                            @dbeautyhouse.co.id
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">No Handphone</label>
+                                    <input type="text" class="form-control" name="phone" placeholder="" value="{{ $user->employee->phone }}" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
                                     <label class="form-label">Agama</label>
                                     <select name="religion" type="text" class="form-select tomSelect" placeholder="Pilih agama...">
-                                        <option value=""></option>
+                                        <option value="" {{ $user->employee->religion == null ? 'selected' : '' }}></option>
                                         <option value="Islam" {{ $user->employee->religion == 'Islam' ? 'selected' : '' }}>Islam</option>
                                         <option value="Kristen Protestan" {{ $user->employee->religion == 'Kristen Protestan' ? 'selected' : '' }}>Kristen Protestan</option>
                                         <option value="Kristen Katolik" {{ $user->employee->religion == 'Kristen Katolik' ? 'selected' : '' }}>Kristen Katolik</option>
@@ -99,11 +100,11 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-5">
+                            <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label class="form-label">Kelamin</label>
                                     <select name="gender" type="text" class="form-select tomSelect" placeholder="Pilih kelamin...">
-                                        <option value=""></option>
+                                        <option value="" {{ $user->employee->gender == null ? 'selected' : '' }}></option>
                                         <option value="Laki-Laki" {{ $user->employee->gender == 'Laki-Laki' ? 'selected' : '' }}>Laki-Laki</option>
                                         <option value="Perempuan" {{ $user->employee->gender == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                                         <option value="Lainnya" {{ $user->employee->gender == 'Lainnya' ? 'selected' : '' }}>Lainya</option>
@@ -112,26 +113,53 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-3">
+                                    <label class="form-label">Status Pernikahan</label>
+                                    <select name="maritalStatus" type="text" class="form-select tomSelect" placeholder="Pilih status pernikahan...">
+                                        <option value="" {{ $user->employee->marital_status == null ? 'selected' : '' }}></option>
+                                        <option value="Belum Kawin" {{ $user->employee->marital_status == 'Belum Kawin' ? 'selected' : '' }}>Belum Kawin</option>
+                                        <option value="Kawin" {{ $user->employee->marital_status == 'Kawin' ? 'selected' : '' }}>Kawin</option>
+                                        <option value="Cerai Hidup" {{ $user->employee->marital_status == 'Cerai Hidup' ? 'selected' : '' }}>Cerai Hidup</option>
+                                        <option value="Cerai Mati" {{ $user->employee->marital_status == 'Cerai Mati' ? 'selected' : '' }}>Cerai Mati</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Pendidikan Terakhir</label>
+                                    <select name="education" type="text" class="form-select tomSelect" placeholder="Pilih status pernikahan...">
+                                        <option value="" {{ $user->employee->education == null ? 'selected' : '' }}></option>
+                                        <option value="SD" {{ $user->employee->education == 'SD' ? 'selected' : '' }}>SD / Sederajat</option>
+                                        <option value="SMP" {{ $user->employee->education == 'SMP' ? 'selected' : '' }}>SMP / Sederajat</option>
+                                        <option value="SMA" {{ $user->employee->education == 'SMA' ? 'selected' : '' }}>SMA / Sederajat</option>
+                                        <option value="D3" {{ $user->employee->education == 'D3' ? 'selected' : '' }}>D3 / Sederajat</option>
+                                        <option value="S1" {{ $user->employee->education == 'S1' ? 'selected' : '' }}>S1 / Sederajat</option>
+                                        <option value="S2" {{ $user->employee->education == 'S2' ? 'selected' : '' }}>S2 / Sederajat</option>
+                                        <option value="S3" {{ $user->employee->education == 'S3' ? 'selected' : '' }}>S3 / Sederajat</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
                                     <label class="form-label">Tempat Lahir</label>
-                                    <input type="text" class="form-control" name="placeBirth" value="{{ $user->employee->place_of_birth }}" />
+                                    <input type="text" class="form-control" name="placeBirth" placeholder="" value="{{ $user->employee->place_of_birth }}" />
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label class="form-label">Tanggal Lahir</label>
-                                    <input class="form-control mb-2" name="dateBirth" id="datepicker" value="{{ $user->employee->date_of_birth }}" />
+                                    <input class="form-control mb-2 datepicker" name="dateBirth" id="datepicker" value="{{ \Carbon\Carbon::parse($user->employee->date_of_birth)->format('d F, Y') }}" />
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label class="form-label">Alamat Sesuai KTP</label>
-                                    <textarea name="address" class="form-control" data-bs-toggle="autosize" placeholder="" style="overflow: hidden; overflow-wrap: break-word; resize: none; text-align: start; height: 56px;" value="{{ $user->employee->address }}"></textarea>
+                                    <textarea name="address" class="form-control" data-bs-toggle="autosize" placeholder="" style="overflow: hidden; overflow-wrap: break-word; resize: none; text-align: start; height: 56px;">{{ $user->employee->address }}</textarea>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label class="form-label">Alamat Domisili (Optional)</label>
-                                    <textarea name="address2" class="form-control" data-bs-toggle="autosize" style="overflow: hidden; overflow-wrap: break-word; resize: none; text-align: start; height: 56px;" value="{{ $user->employee->address2 }}"></textarea>
+                                    <textarea name="address2" class="form-control" data-bs-toggle="autosize" style="overflow: hidden; overflow-wrap: break-word; resize: none; text-align: start; height: 56px;">{{ $user->employee->address2 }}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -156,9 +184,21 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
+                                        <label class="form-label">Nomor BPJS Kesehatan</label>
+                                        <input type="text" class="form-control" name="bpjs" value="{{ $user->employee->bpjs }}" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Nomor BPJAMSOSTEK</label>
+                                        <input type="text" class="form-control" name="bpjamsostek" value="{{ $user->employee->bpjamsostek }}" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
                                         <label class="form-label">Nama Bank</label>
                                         <select name="bank" type="text" class="form-select tomSelect" placeholder="Pilih bank...">
-                                            <option value=""></option>
+                                            <option value="" {{ $user->employee->bank == null ? 'selected' : '' }}></option>
                                             @foreach ($bankList as $bank)
                                                 <option value="{{ $bank['sandi_bank'] }}" {{ $user->employee->bank == $bank['sandi_bank'] ? 'selected' : '' }}>{{ $bank['nama_bank'] }}</option>
                                             @endforeach
@@ -182,37 +222,64 @@
                             <div class="row row-cards">
                                 <div class="col-lg-4">
                                     <div class="mb-3">
-                                        <label class="form-label">Cabang</label>
-                                        <select name="branch" type="text" class="form-select tomSelect" placeholder="Pilih cabang...">
-                                            <option value=""></option>
-                                            @foreach ($branches as $branch)
-                                                <option value="{{ $branch->id }}" {{ $user->employee->branch_id == $branch->id ? 'selected' : '' }}>{{ $branch->name }}</option>
-                                            @endforeach
-                                        </select>
+                                        <label class="form-label">Jabatan</label>
+                                        <input type="text" class="form-control" name="position" value="{{ $user->employee->position }}" />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="mb-3">
                                         <label class="form-label">Departemen</label>
                                         <select name="departement" type="text" class="form-select tomSelect" placeholder="Pilih departemen...">
-                                            <option value=""></option>
+                                            <option value="" {{ $user->employee->departement_id == null ? 'selected' : '' }}></option>
                                             @foreach ($departements as $departement)
-                                                <option value="{{ $departement->id }}" {{ $user->employee->division_id == $departement->id ? 'selected' : '' }}>{{ $departement->name }}</option>
+                                                <option value="{{ $departement->id }}" {{ $user->employee->departement_id == $departement->id ? 'selected' : '' }}>{{ $departement->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-lg-4">
                                     <div class="mb-3">
-                                        <label class="form-label">Tanggal Masuk</label>
-                                        <input class="form-control mb-2" name="joined_at" id="datepicker2" value="{{ $user->employee->joined_at }}" />
+                                        <label class="form-label">Sub Departemen</label>
+                                        <select name="subDepartement" type="text" class="form-select tomSelect" placeholder="Pilih sub departemen...">
+                                            <option value="" {{ $user->employee->sub_departement_id == null ? 'selected' : '' }}></option>
+                                            @foreach ($subDepartements as $subdepartement)
+                                                <option value="{{ $subdepartement->id }}" {{ $user->employee->departement_id == $subdepartement->id ? 'selected' : '' }}>{{ $subdepartement->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-lg-5">
+                                <div class="col-lg-6">
                                     <div class="mb-3">
-                                        <label class="form-label">Status</label>
-                                        <select name="status" type="text" class="form-select tomSelect" placeholder="Pilih status...">
+                                        <label class="form-label">Perusahaan</label>
+                                        <select name="company" type="text" class="form-select tomSelect" placeholder="Pilih perusahaan...">
                                             <option value=""></option>
+                                            <option value="PT KITA JUARA ELOK NUSANTARA" {{ $user->employee->company == 'PT KITA JUARA ELOK NUSANTARA' ? 'selected' : '' }}>PT KITA JUARA NUSANTARA</option>
+                                            <option value="CV GEMILANG WIRATAMA NUSANTARA" {{ $user->employee->company == 'CV GEMILANG WIRATAMA NUSANTARA' ? 'selected' : '' }}>CV GEMILANG WIRATAMA NUSANTARA</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Cabang</label>
+                                        <select name="branch" type="text" class="form-select tomSelect" placeholder="Pilih cabang...">
+                                            <option value="" {{ $user->employee->branch_id == null ? 'selected' : '' }}></option>
+                                            @foreach ($branches as $branch)
+                                                <option value="{{ $branch->id }}" {{ $user->employee->branch_id == $branch->id ? 'selected' : '' }}>{{ $branch->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Tanggal Masuk</label>
+                                        <input class="form-control mb-2 datepicker" name="joined_at" id="datepicker2" value="{{ \Carbon\Carbon::parse($user->employee->joined_at)->format('d F, Y') }}" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Status Kerja</label>
+                                        <select name="status" type="text" class="form-select tomSelect" placeholder="Pilih status kerja...">
+                                            <option value="" {{ $user->employee->status == null ? 'selected' : '' }}></option>
                                             <option value="Kontrak" {{ $user->employee->status == 'Kontrak' ? 'selected' : '' }}>Kontrak</option>
                                             <option value="Permanen / Tetap" {{ $user->employee->status == 'Permanen / Tetap' ? 'selected' : '' }}>Permanen / Tetap</option>
                                             <option value="Lainnya" {{ $user->employee->status == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
@@ -221,22 +288,20 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="mb-3">
-                                        <label class="form-label">Periode Kontrak</label>
-                                        <select name="period" type="text" class="form-select tomSelect" placeholder="Pilih periode...">
-                                            <option value=""></option>
-                                            <option value="1" {{ $user->employee->period == '1' ? 'selected' : '' }}>1 Bulan</option>
-                                            <option value="2" {{ $user->employee->period == '2' ? 'selected' : '' }}>2 Bulan</option>
-                                            <option value="3" {{ $user->employee->period == '3' ? 'selected' : '' }}>3 Bulan</option>
-                                            <option value="4" {{ $user->employee->period == '4' ? 'selected' : '' }}>4 Bulan</option>
-                                            <option value="5" {{ $user->employee->period == '5' ? 'selected' : '' }}>5 Bulan</option>
-                                            <option value="6" {{ $user->employee->period == '6' ? 'selected' : '' }}>6 Bulan</option>
-                                            <option value="7" {{ $user->employee->period == '7' ? 'selected' : '' }}>7 Bulan</option>
-                                            <option value="8" {{ $user->employee->period == '8' ? 'selected' : '' }}>8 Bulan</option>
-                                            <option value="9" {{ $user->employee->period == '9' ? 'selected' : '' }}>9 Bulan</option>
-                                            <option value="10" {{ $user->employee->period == '10' ? 'selected' : '' }}>10 Bulan</option>
-                                            <option value="11" {{ $user->employee->period == '11' ? 'selected' : '' }}>11 Bulan</option>
-                                            <option value="12" {{ $user->employee->period == '12' ? 'selected' : '' }}>12 Bulan</option>
-                                        </select>
+                                        <label class="form-label">Tanggal Kontrak Awal</label>
+                                        <input class="form-control mb-2 datepicker" name="start_contract_at" id="datepicker3" value="{{ \Carbon\Carbon::parse($user->employee->start_contract_at)->format('d F, Y') }}" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Tanggal Kontrak Berakhir</label>
+                                        <input class="form-control mb-2 datepicker" name="end_contract_at" id="datepicker4" value="{{ \Carbon\Carbon::parse($user->employee->end_contract_at)->format('d F, Y') }}" />
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Saldo Cuti</label>
+                                        <input type="number" class="form-control" name="saldoCuti" value="{{ $user->employee->saldoCuti }}" />
                                     </div>
                                 </div>
                             </div>
@@ -250,17 +315,6 @@
                         <h3 class="card-title">Lainnya <span class="form-help " data-bs-toggle="popover" data-bs-placement="top" data-bs-html="true" data-bs-content="<p>Abaikan jika kamu tidak tahu apa yang akan kamu lakukan.</p>">?</span></h3>
                         @if (Auth::user()->isAdmin == 1)
                             <div class="row row-cards">
-                                <div class="col-lg-12">
-                                    <div class="mb-3">
-                                        <label class="form-label">Role</label>
-                                        <select name="role" type="text" class="form-select tomSelect" placeholder="Pilih role...">
-                                            <option value=""></option>
-                                            @foreach ($roles->sortBy('name') as $role)
-                                                <option value="{{ $role->id }}" {{ $user->role_id == $role->id ? 'selected' : '' }}>{{ $role->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
                                 <div class="col-lg-12">
                                     <div class="mb-3">
                                         <label class="form-label">Sebagai Administrator?</label>
@@ -303,21 +357,55 @@
 
 @section('cscript')
     <script>
+        datepicker = document.getElementById('datepicker');
+        datepicker2 = document.getElementById('datepicker2');
+        datepicker3 = document.getElementById('datepicker3');
+        datepicker4 = document.getElementById('datepicker4');
+
         new Litepicker({
-            element: document.getElementById('datepicker'),
-            format: 'D MMMM, YYYY',
+            element: datepicker,
+            format: 'D MMMM YYYY',
+            lang: 'id-ID',
             buttonText: {
                 previousMonth: '<i role="button" class="ti ti-arrow-narrow-left icon"></i>',
                 nextMonth: '<i role="button" class="ti ti-arrow-narrow-right icon"></i>',
             },
         });
         new Litepicker({
-            element: document.getElementById('datepicker2'),
-            format: 'D MMMM, YYYY',
+            element: datepicker2,
+            format: 'D MMMM YYYY',
+            lang: 'id-ID',
             buttonText: {
                 previousMonth: '<i role="button" class="ti ti-arrow-narrow-left icon"></i>',
                 nextMonth: '<i role="button" class="ti ti-arrow-narrow-right icon"></i>',
             },
+        });
+        new Litepicker({
+            element: datepicker3,
+            format: 'D MMMM YYYY',
+            lang: 'id-ID',
+            buttonText: {
+                previousMonth: '<i role="button" class="ti ti-arrow-narrow-left icon"></i>',
+                nextMonth: '<i role="button" class="ti ti-arrow-narrow-right icon"></i>',
+            },
+        });
+
+        new Litepicker({
+            element: datepicker4,
+            format: 'D MMMM YYYY',
+            lang: 'id-ID',
+            buttonText: {
+                previousMonth: '<i role="button" class="ti ti-arrow-narrow-left icon"></i>',
+                nextMonth: '<i role="button" class="ti ti-arrow-narrow-right icon"></i>',
+            },
+        });
+    </script>
+
+    <script type="text/javascript">
+        $('#formKaryawan').bind('keypress', function(e) {
+            if (e.keyCode == 13) {
+                return false;
+            }
         });
     </script>
 @endsection

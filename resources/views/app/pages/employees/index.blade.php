@@ -29,7 +29,7 @@
                     </a>
                     <div class="dropdown-menu">
                         {{-- <a class="dropdown-item" href="{{ route('app-export-pdf-employees') }}">PDF</a> --}}
-                        <a class="dropdown-item" href="{{ route('app-export-csv-employees') }}">Format / Template</a>
+                        <a class="dropdown-item" href="{{ route('app-download-format-employees') }}">Format / Template</a>
                         <a class="dropdown-item" href="{{ route('app-export-csv-employees') }}">Csv</a>
                         <a class="dropdown-item" href="{{ route('app-export-excel-employees') }}">Excel</a>
                     </div>
@@ -97,7 +97,7 @@
 
                                     @if ($employee->nik == Auth::user()->nik)
                                         <td class="d-flex justify-content-center d-print-none">
-                                            <a href="{{ route('app-my-profile') }}" class="text-primary me-2" aria-label="Lihat">
+                                            <a href="{{ route('app-users-profile', $employee->user->slug) }}" class="text-primary me-2" aria-label="Lihat">
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                     <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>

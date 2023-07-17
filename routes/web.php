@@ -8,6 +8,7 @@ use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StructuralController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,7 @@ Route::controller(EmployeeController::class)->group(function () {
     Route::get('/employees/edit/{slug}', 'edit')->name('app-employees-edit');
     Route::post('/employees/update/{slug}', 'update')->name('app-employees-update');
     Route::post('/employees/delete', 'delete')->name('app-employees-delete');
+    Route::get('/employees/download-format', 'downloadFormat')->name('app-download-format-employees');
 });
 
 Route::controller(ProfileController::class)->group(function () {
@@ -56,12 +58,14 @@ Route::controller(ProfileController::class)->group(function () {
     Route::post('/post/reset-password', 'postResetPassword')->name('app-post-reset-password');
 });
 
-Route::controller(Controller::class)->group(function () {
-    Route::get('/structure', 'structure')->name('app-structure');
+Route::controller(StructuralController::class)->group(function () {
+    Route::get('/structural', 'index')->name('app-structural');
+    // Route::get('/structural/edit/{slug}', 'update')->name('app-structural-update');
+    Route::get('/structural/edit/departement/{slug}', 'updateDepartements')->name('app-structural-departements-update');
+    Route::get('/structural/edit/sub-departements/{slug}', 'updateSubDepartements')->name('app-structural-update');
 });
 
 Route::controller(ExcelController::class)->group(function () {
-    // Route::get('/export/employees/pdf', 'exportEmployeesPdf')->name('app-export-pdf-employees');
     Route::get('/export/employees/excel', 'exportEmployeesExcel')->name('app-export-excel-employees');
     Route::get('/export/employees/csv', 'exportEmployeesCsv')->name('app-export-csv-employees');
     Route::post('/import/employees', 'importEmployees')->name('app-import-employees');

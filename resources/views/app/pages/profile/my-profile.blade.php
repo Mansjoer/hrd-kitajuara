@@ -17,7 +17,7 @@
         </div>
         <div class="col-auto ms-auto d-print-none">
             <div class="btn-list">
-                <a href="{{ route('app-employees') }}" class="btn btn-primary d-none d-sm-inline-block">
+                <a href="{{ route('app-employees-edit', Auth::user()->slug) }}" class="btn btn-primary d-none d-sm-inline-block">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
@@ -26,7 +26,7 @@
                     </svg>
                     Ubah
                 </a>
-                <a href="{{ route('app-employees') }}" class="btn btn-primary d-sm-none btn-icon" aria-label="Kembali">
+                <a href="{{ route('app-employees', Auth::user()->slug) }}" class="btn btn-primary d-sm-none btn-icon" aria-label="Kembali">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
@@ -170,7 +170,7 @@
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Bank</div>
-                            <div class="datagrid-content">{{ Auth::user()->employee->bank ? Auth::user()->employee->bank : '-' }}</div>
+                            <div class="datagrid-content">{{ Auth::user()->employee->bank ? $user_bank['nama_bank'] : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Nomor Rekening</div>
@@ -211,6 +211,10 @@
                         <div class="datagrid-item">
                             <div class="datagrid-title">Tanggal Kontrak Berakhir</div>
                             <div class="datagrid-content">{{ Auth::user()->employee->end_contract_at ? \Carbon\Carbon::parse(Auth::user()->employee->end_contract_at)->translatedFormat('d F, Y') : '-' }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">Sisa Saldo Cuti</div>
+                            <div class="datagrid-content">{{ Auth::user()->employee->saldoCuti }}</div>
                         </div>
                     </div>
                 </div>

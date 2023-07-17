@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\UserAttendance;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
@@ -13,7 +14,10 @@ class ProfileController extends Controller
 {
     public function myProfile()
     {
-        return view('app.pages.profile.my-profile');
+        $nama_bank = new Controller;
+        $nama_bank = $nama_bank->namaBank();
+        $user_bank = $nama_bank->where('sandi_bank', Auth::user()->employee->bank)->first();
+        return view('app.pages.profile.my-profile', compact('user_bank'));
     }
 
     public function myProfileChangePhoto(Request $request)
@@ -53,7 +57,12 @@ class ProfileController extends Controller
     public function profile(Request $request, $slug)
     {
         $user = User::where('slug', $slug)->first();
-        return view('app.pages.profile.profile', compact('user'));
+
+        $nama_bank = new Controller;
+        $nama_bank = $nama_bank->namaBank();
+        $user_bank = $nama_bank->where('sandi_bank', $user->employee->bank)->first();
+
+        return view('app.pages.profile.profile', compact('user', 'user_bank'));
     }
 
     public function profileChangePhoto(Request $request, $slug)
@@ -87,8 +96,8 @@ class ProfileController extends Controller
 
     public function attendance(Request $request, $slug)
     {
-        $daysInMonth = Carbon::now()->daysInMonth;
         $user = User::where('slug', $slug)->first();
+        $daysInMonth = Carbon::now()->daysInMonth;
         $attendances = UserAttendance::where('user_id', $user->id)->paginate(7);
         return view('app.pages.profile.profile-attendance', compact('user', 'daysInMonth', 'attendances'));
     }

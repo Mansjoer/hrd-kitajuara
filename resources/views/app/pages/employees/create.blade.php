@@ -31,7 +31,7 @@
 @endsection
 
 @section('content')
-    <form action="{{ route('app-employees-post-create') }}" method="POST" spellcheck="false" autocomplete="off">
+    <form action="{{ route('app-employees-post-create') }}" method="POST" spellcheck="false" autocomplete="off" id="formKaryawan">
         {{ csrf_field() }}
         <div class="row">
             <div class="col-lg-8">
@@ -42,13 +42,7 @@
                             <div class="col-lg-2">
                                 <div class="mb-3">
                                     <label class="form-label">NIK</label>
-                                    {{-- <div class="input-group input-group-flat">
-                                        <span class="input-group-text">
-                                            DBH
-                                        </span>
-                                        <input name="nik" type="text" class="form-control ps-0" placeholder="0000" autocomplete="off" />
-                                    </div> --}}
-                                    <input name="nik" type="text" class="form-control" placeholder="" autocomplete="off" />
+                                    <input name="nik" type="text" class="form-control" placeholder="" autocomplete="off" style="text-transform: uppercase;" />
                                 </div>
                             </div>
                             <div class="col-lg-5">
@@ -121,7 +115,7 @@
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label class="form-label">Pendidikan Terakhir</label>
-                                    <select name="maritalStatus" type="text" class="form-select tomSelect" placeholder="Pilih status pernikahan...">
+                                    <select name="education" type="text" class="form-select tomSelect" placeholder="Pilih status pernikahan...">
                                         <option value=""></option>
                                         <option value="SD">SD / Sederajat</option>
                                         <option value="SMP">SMP</option>
@@ -299,26 +293,6 @@
                                         <input type="number" class="form-control" name="saldoCuti" value="0" />
                                     </div>
                                 </div>
-                                {{-- <div class="col-lg-4">
-                                    <div class="mb-3">
-                                        <label class="form-label">Periode Kontrak</label>
-                                        <select name="period" type="text" class="form-select tomSelect" placeholder="Pilih periode...">
-                                            <option value=""></option>
-                                            <option value="1">1 Bulan</option>
-                                            <option value="2">2 Bulan</option>
-                                            <option value="3">3 Bulan</option>
-                                            <option value="4">4 Bulan</option>
-                                            <option value="5">5 Bulan</option>
-                                            <option value="6">6 Bulan</option>
-                                            <option value="7">7 Bulan</option>
-                                            <option value="8">8 Bulan</option>
-                                            <option value="9">9 Bulan</option>
-                                            <option value="10">10 Bulan</option>
-                                            <option value="11">11 Bulan</option>
-                                            <option value="12">12 Bulan</option>
-                                        </select>
-                                    </div>
-                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -382,10 +356,10 @@
 @endsection
 
 @section('cscript')
-    <script>
+    <script type="text/javascript">
         new Litepicker({
             element: document.getElementById('datepicker'),
-            format: 'D MMMM, YYYY',
+            format: 'D MMMM YYYY',
             lang: 'id-ID',
             buttonText: {
                 previousMonth: '<i role="button" class="ti ti-arrow-narrow-left icon"></i>',
@@ -394,7 +368,7 @@
         });
         new Litepicker({
             element: document.getElementById('datepicker2'),
-            format: 'D MMMM, YYYY',
+            format: 'D MMMM YYYY',
             lang: 'id-ID',
             buttonText: {
                 previousMonth: '<i role="button" class="ti ti-arrow-narrow-left icon"></i>',
@@ -403,7 +377,7 @@
         });
         new Litepicker({
             element: document.getElementById('datepicker3'),
-            format: 'D MMMM, YYYY',
+            format: 'D MMMM YYYY',
             lang: 'id-ID',
             buttonText: {
                 previousMonth: '<i role="button" class="ti ti-arrow-narrow-left icon"></i>',
@@ -413,12 +387,20 @@
 
         new Litepicker({
             element: document.getElementById('datepicker4'),
-            format: 'D MMMM, YYYY',
+            format: 'D MMMM YYYY',
             lang: 'id-ID',
             buttonText: {
                 previousMonth: '<i role="button" class="ti ti-arrow-narrow-left icon"></i>',
                 nextMonth: '<i role="button" class="ti ti-arrow-narrow-right icon"></i>',
             },
+        });
+    </script>
+
+    <script type="text/javascript">
+        $('#formKaryawan').bind('keypress', function(e) {
+            if (e.keyCode == 13) {
+                return false;
+            }
         });
     </script>
 @endsection

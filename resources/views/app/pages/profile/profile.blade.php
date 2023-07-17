@@ -94,19 +94,23 @@
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Nama</div>
-                            <div class="datagrid-content">{{ $user->employee->name }}</div>
+                            <div class="datagrid-content">{{ $user->name }}</div>
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Nama Panggilan</div>
                             <div class="datagrid-content">{{ $user->employee->username }}</div>
                         </div>
                         <div class="datagrid-item">
-                            <div class="datagrid-title">No Handphone</div>
-                            <div class="datagrid-content">{{ $user->employee->phone ? $user->employee->phone : '-' }}</div>
+                            <div class="datagrid-title">Status Pernikahan</div>
+                            <div class="datagrid-content">{{ $user->employee->marital_status ? $user->employee->marital_status : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
-                            <div class="datagrid-title">Umur</div>
-                            <div class="datagrid-content">{{ \Carbon\Carbon::parse($user->employee->date_of_birth)->age }}</div>
+                            <div class="datagrid-title">Pendidikan Terakhir</div>
+                            <div class="datagrid-content">{{ $user->employee->education ? $user->employee->education : '-' }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">No Handphone</div>
+                            <div class="datagrid-content">{{ $user->employee->phone ? $user->employee->phone : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Tempat Lahir</div>
@@ -114,7 +118,11 @@
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Tanggal Lahir</div>
-                            <div class="datagrid-content">{{ $user->employee->date_of_birth ? $user->employee->date_of_birth : '-' }}</div>
+                            <div class="datagrid-content">{{ $user->employee->date_of_birth ? \Carbon\Carbon::parse($user->employee->date_of_birth)->translatedFormat('d F, Y') : '-' }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">Umur</div>
+                            <div class="datagrid-content">{{ \Carbon\Carbon::parse($user->employee->date_of_birth)->age }}</div>
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Agama</div>
@@ -137,16 +145,24 @@
                     <h3 class="card-title">Informasi Personal</h3>
                     <div class="datagrid mb-3">
                         <div class="datagrid-item">
-                            <div class="datagrid-title">KTP</div>
+                            <div class="datagrid-title">Nomor KTP</div>
                             <div class="datagrid-content">{{ $user->employee->ktp ? $user->employee->ktp : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
-                            <div class="datagrid-title">NPWP</div>
+                            <div class="datagrid-title">Nomor NPWP</div>
+                            <div class="datagrid-content">{{ $user->employee->npwp ? $user->employee->npwp : '-' }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">Nomor BPJS</div>
+                            <div class="datagrid-content">{{ $user->employee->ktp ? $user->employee->ktp : '-' }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">Nomor BPJAMSOSTEK</div>
                             <div class="datagrid-content">{{ $user->employee->npwp ? $user->employee->npwp : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Bank</div>
-                            <div class="datagrid-content">{{ $user->employee->bank ? $user->employee->bank : '-' }}</div>
+                            <div class="datagrid-content">{{ $user->employee->bank ? $user_bank['nama_bank'] : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Nomor Rekening</div>
@@ -161,24 +177,36 @@
                             <div class="datagrid-content">{{ $user->employee->branch ? $user->employee->branch->name : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
+                            <div class="datagrid-title">Tanggal Masuk</div>
+                            <div class="datagrid-content">{{ $user->employee->joined_at ? \Carbon\Carbon::parse($user->employee->joined_at)->translatedFormat('d F, Y') : '-' }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">Lama Bekerja</div>
+                            <div class="datagrid-content">{{ \Carbon\Carbon::parse($user->employee->joined_at)->diff(\Carbon\Carbon::now())->format('%y Tahun, %m Bulan %d Hari') }}</div>
+                        </div>
+                        <div class="datagrid-item">
                             <div class="datagrid-title">Departemen</div>
                             <div class="datagrid-content">{{ $user->employee->departement ? $user->employee->departement->name : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
-                            <div class="datagrid-title">Tanggal Masuk</div>
-                            <div class="datagrid-content">{{ $user->employee->joined_at ? $user->employee->joined_at : '-' }}</div>
+                            <div class="datagrid-title">Sub Departemen</div>
+                            <div class="datagrid-content">{{ $user->employee->subDepartement ? $user->employee->subDepartement->name : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
                             <div class="datagrid-title">Status</div>
                             <div class="datagrid-content">{{ $user->employee->status ? $user->employee->status : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
-                            <div class="datagrid-title">Periode</div>
-                            <div class="datagrid-content">{{ $user->employee->period ? $user->employee->period . ' Bulan' : '-' }}</div>
+                            <div class="datagrid-title">Tanggal Kontrak Awal</div>
+                            <div class="datagrid-content">{{ $user->employee->start_contract_at ? \Carbon\Carbon::parse($user->employee->start_contract_at)->translatedFormat('d F, Y') : '-' }}</div>
                         </div>
                         <div class="datagrid-item">
-                            <div class="datagrid-title">Lama Bekerja</div>
-                            <div class="datagrid-content">{{ \Carbon\Carbon::parse($user->employee->joined_at)->diff(\Carbon\Carbon::now())->format('%y Tahun, %m Bulan %d Hari') }}</div>
+                            <div class="datagrid-title">Tanggal Kontrak Berakhir</div>
+                            <div class="datagrid-content">{{ $user->employee->end_contract_at ? \Carbon\Carbon::parse($user->employee->end_contract_at)->translatedFormat('d F, Y') : '-' }}</div>
+                        </div>
+                        <div class="datagrid-item">
+                            <div class="datagrid-title">Sisa Saldo Cuti</div>
+                            <div class="datagrid-content">{{ $user->employee->saldoCuti }}</div>
                         </div>
                     </div>
                 </div>

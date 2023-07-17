@@ -17,7 +17,7 @@
             </a>
         </h1>
         <div class="navbar-nav flex-row order-md-last">
-            @if (Auth::check())
+            {{-- @if (Auth::check())
                 <div class="nav-item d-none d-md-flex me-3">
                     <div class="btn-list">
                         <a href="https://github.com/tabler/tabler" class="btn" target="_blank" rel="noreferrer">
@@ -26,7 +26,7 @@
                         </a>
                     </div>
                 </div>
-            @endif
+            @endif --}}
             <div class="d-none d-md-flex">
                 <a role="button" class="nav-link px-0" id="buttonChangeTheme" title="Mode gelap" data-bs-toggle="tooltip" data-bs-placement="left">
                     <i class="icon ti ti-moon" id="themeIcon"></i>
@@ -47,6 +47,22 @@
                                 <div class="list-group list-group-flush list-group-hoverable">
                                     <div class="list-group-item">
                                         <div class="row align-items-center">
+                                            {{-- <div class="col-auto"><span class="status-dot status-dot-animated bg-red d-block"></span></div> --}}
+                                            <div class="col text-truncate">
+                                                {{-- <a href="#" class="text-body d-block">Absen Masuk</a> --}}
+                                                <div class="d-block text-muted mt-n1">
+                                                    Notifikasi akan bekerja disaat semua sistem selesai
+                                                </div>
+                                            </div>
+                                            {{-- <div class="col-auto">
+                                                <a role="button" class="list-group-item-actions" style="text-decoration: none;" title="Delete" data-bs-toggle="tooltip" data-bs-placement="left">
+                                                    <i class="ti ti-trash icon text-red"></i>
+                                                </a>
+                                            </div> --}}
+                                        </div>
+                                    </div>
+                                    {{-- <div class="list-group-item">
+                                        <div class="row align-items-center">
                                             <div class="col-auto"><span class="status-dot status-dot-animated bg-red d-block"></span></div>
                                             <div class="col text-truncate">
                                                 <a href="#" class="text-body d-block">Absen Masuk</a>
@@ -60,7 +76,7 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

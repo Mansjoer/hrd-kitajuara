@@ -7,11 +7,11 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\Branch;
 use App\Models\Employee;
+use Jenssegers\Date\Date;
 use App\Models\Departement;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\SubDepartement;
-use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
 {
@@ -33,6 +33,13 @@ class EmployeeController extends Controller
             $employees = Employee::select('*')->paginate(10);
         }
         return view('app.pages.employees.index', compact('employees', 'data'));
+    }
+
+    public function downloadFormat()
+    {
+        $file = public_path('format\Format Karyawan Kita Juara.xlsx');
+
+        return response()->download($file);
     }
 
     public function create()
@@ -57,13 +64,14 @@ class EmployeeController extends Controller
 
     public function update(Request $request, $slug)
     {
+        Date::setLocale('id');
+
         $user = User::where('slug', $slug)->first();
 
         $user->update([
             'nik' => $request->nik,
             'name' => $request->name,
-            'email' => $request->email,
-            'role_id' => $request->role,
+            'email' => $request->email . '@dbeautyhouse.co.id',
             'isAdmin' => $request->isAdmin,
             'slug' => Str::slug($request->name, '-')
         ]);
@@ -76,7 +84,7 @@ class EmployeeController extends Controller
             'gender' => $request->gender,
             'marital_status' => $request->maritalStatus,
             'place_of_birth' => $request->placeBirth,
-            'date_of_birth' => $request->dateBirth,
+            'date_of_birth' => Date::createFromFormat('d F Y', $request->dateBirth),
             'address' => $request->address,
             'address2' => $request->address2,
             'ktp' => $request->ktp,
@@ -90,10 +98,11 @@ class EmployeeController extends Controller
             'sub_departement_id' => $request->subDepartement,
             'company' => $request->company,
             'branch_id' => $request->branch,
-            'joined_at' => $request->joined_at,
+            'joined_at' => Date::createFromFormat('d F Y', $request->joined_at),
             'status' => $request->status,
-            'start_contract_at' => $request->start_contract_at,
-            'end_contract_at' => $request->end_contract_at,
+            'start_contract_at' => Date::createFromFormat('d F Y', $request->start_contract_at),
+            'end_contract_at' => Date::createFromFormat('d F Y', $request->end_contract_at),
+            'saldoCuti' => $request->saldoCuti,
             'slug' => Str::slug($request->name, '-')
         ]);
         return redirect()->route('app-employees-edit', Str::slug($request->name, '-'))->with('success', 'success');
@@ -121,7 +130,7 @@ class EmployeeController extends Controller
         $em->gender = $request->gender;
         $em->marital_status = $request->maritalStatus;
         $em->place_of_birth = $request->placeBirth;
-        $em->date_of_birth = Carbon::parse($request->dateBirth)->format('Y-m-d');
+        $em->date_of_birth = Date::createFromFormat('d F Y', $request->dateBirth);
         $em->address = $request->address;
         $em->address2 = $request->address2;
         $em->ktp = $request->ktp;
@@ -135,10 +144,10 @@ class EmployeeController extends Controller
         $em->sub_departement_id = $request->subDepartement;
         $em->company = $request->company;
         $em->branch_id = $request->branch;
-        $em->joined_at = Carbon::parse($request->joined_at)->format('Y-m-d');
+        $em->joined_at = Date::createFromFormat('d F Y', $request->joined_at);
         $em->status = $request->status;
-        $em->start_contract_at = Carbon::parse($request->start_contract_at)->format('Y-m-d');
-        $em->end_contract_at = Carbon::parse($request->end_contract_at)->format('Y-m-d');
+        $em->start_contract_at = Date::createFromFormat('d F Y', $request->start_contract_at);
+        $em->end_contract_at = Date::createFromFormat('d F Y', $request->end_contract_at);
         $em->user_id = $users->id;
         $em->slug = Str::slug($request->name, '-');
         $em->save();

@@ -22,8 +22,9 @@ class Controller extends BaseController
         View::share(compact('site_setting', 'version', 'bankList'));
     }
 
-    public function structure()
+    public function namaBank()
     {
-        return view('app.structure');
+        $bankList = collect(json_decode(file_get_contents("app/custom/json/bank.json"), true));
+        return $bankList;
     }
 }
