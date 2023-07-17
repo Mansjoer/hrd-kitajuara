@@ -280,8 +280,11 @@
                                         <label class="form-label">Status Kerja</label>
                                         <select name="status" type="text" class="form-select tomSelect" placeholder="Pilih status kerja...">
                                             <option value="" {{ $user->employee->status == null ? 'selected' : '' }}></option>
-                                            <option value="Kontrak" {{ $user->employee->status == 'Kontrak' ? 'selected' : '' }}>Kontrak</option>
-                                            <option value="Permanen / Tetap" {{ $user->employee->status == 'Permanen / Tetap' ? 'selected' : '' }}>Permanen / Tetap</option>
+                                            <option value="TETAP/ PKWTT" {{ $user->employee->status == 'TETAP/ PKWTT' ? 'selected' : '' }}>TETAP/ PKWTT</option>
+                                            <option value="KONTRAK/ PKWT" {{ $user->employee->status == 'KONTRAK/ PKWT' ? 'selected' : '' }}>KONTRAK/ PKWT</option>
+                                            <option value="MITRA" {{ $user->employee->status == 'MITRA' ? 'selected' : '' }}>MITRA</option>
+                                            <option value="PEKERJA HARIAN LEPAS" {{ $user->employee->status == 'PEKERJA HARIAN LEPAS' ? 'selected' : '' }}>PEKERJA HARIAN LEPAS</option>
+                                            <option value="TRAINEE" {{ $user->employee->status == 'TRAINEE' ? 'selected' : '' }}>TRAINEE</option>
                                             <option value="Lainnya" {{ $user->employee->status == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
                                         </select>
                                     </div>
