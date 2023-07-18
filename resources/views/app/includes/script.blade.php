@@ -10,5 +10,6 @@
 <script src="{{ asset('app/assets/js/demo.min.js') }}"></script>
 <script src="{{ asset('app/custom/js/script.js') }}"></script>
 <script src="{{ asset('app/custom/js/auth.js') }}"></script>
+<script src="{{ asset('app/custom/js/iziToast/iziToast.min.js') }}"></script>
 
 @yield('cscript')

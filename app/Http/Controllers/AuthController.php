@@ -12,7 +12,7 @@ class AuthController extends Controller
         $request->validate([
             'nik' => 'required'
         ]);
-        if (Auth::attempt(['nik' => $request->nik, 'password' => $request->password], $request->remember)) {
+        if (Auth::attempt(['nik' => $request->nik, 'password' => $request->password, 'isAdmin' => 1], $request->remember)) {
             $response = [
                 'success' => true,
                 'code' => 200,

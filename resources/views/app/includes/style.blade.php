@@ -6,4 +6,5 @@
 <link href="{{ asset('app/assets/css/demo.min.css') }}" rel="stylesheet" />
 <link rel="stylesheet" href="{{ asset('app/custom/css/tabler-icons.min.css') }}">
 <link href="{{ asset('app/custom/css/style.css') }}" rel="stylesheet">
+<link href="{{ asset('app/custom/css/iziToast/iziToast.min.css') }}" rel="stylesheet">
 {{-- <script src="{{ asset('app/custom/css/sweetalert2.min.css') }}"></script> --}}

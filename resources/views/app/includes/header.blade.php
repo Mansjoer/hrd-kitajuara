@@ -83,7 +83,7 @@
                     </div>
                 @endif
             </div>
-            @if (Auth::check())
+            @if (Auth::check() && Auth::user()->isAdmin == 1)
                 <div class="nav-item dropdown ms-3">
                     <a role="button" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
                         @if (Auth::user()->employee->profile_path == null)

@@ -5,7 +5,7 @@
                 <div class="modal-body">
                     <div class="text-center mb-4">
                         <a class="navbar-brand navbar-brand-autodark">
-                            <h2>HRD Kitajuara</h2>
+                            <h2>HC Kitajuara</h2>
                         </a>
                         <p class="empty-subtitle text-muted">
                             Silahkan login menggunakan akun kamu!
@@ -69,7 +69,7 @@
             <div class="modal-body text-center py-4">
                 <i class="ti ti-alert-triangle icon mb-3 text-danger icon-lg"></i>
                 <h3>LOGIN GAGAL</h3>
-                <div class="text-muted">NIK atau kata sandi salah.</div>
+                <div class="text-muted">Akun tidak valid atau kamu bukan admin.</div>
             </div>
         </div>
     </div>

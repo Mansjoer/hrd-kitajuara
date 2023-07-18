@@ -74,19 +74,21 @@
     </div>
     <div class="page" id="mainPage" style="display: none;">
         @include('app.includes.header')
-        @if (Auth::check())
+        @if (Auth::check() && Auth::user()->isAdmin == 1)
             @include('app.includes.navbar')
         @endif
         <div class="page-wrapper">
-            @hasSection('breadcumb')
-                @if (Auth::check())
-                    <div class="page-header d-print-none">
-                        <div class="container-xl">
-                            @yield('breadcumb')
+            @if (Auth::check() && Auth::user()->isAdmin == 1)
+                @hasSection('breadcumb')
+                    @if (Auth::check())
+                        <div class="page-header d-print-none">
+                            <div class="container-xl">
+                                @yield('breadcumb')
+                            </div>
                         </div>
-                    </div>
+                    @endif
+                @else
                 @endif
-            @else
             @endif
             <!-- Page body -->
             <div class="page-body">

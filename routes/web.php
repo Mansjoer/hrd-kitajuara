@@ -61,9 +61,10 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(StructuralController::class)->group(function () {
         Route::get('/structural', 'index')->name('app-structural');
-        // Route::get('/structural/edit/{slug}', 'update')->name('app-structural-update');
-        Route::get('/structural/edit/departement/{slug}', 'updateDepartements')->name('app-structural-departements-update');
-        Route::get('/structural/edit/sub-departements/{slug}', 'updateSubDepartements')->name('app-structural-update');
+        Route::post('/structural/departement/add', 'addDepartement')->name('app-structural-add-departement');
+        Route::post('/structural/sub-departement/add', 'addSubDepartement')->name('app-structural-add-sub-departement');
+        Route::post('/structural/departement/delete', 'deleteDepartement')->name('app-structural-delete-departement');
+        Route::post('/structural/sub-departement/delete', 'deleteSubDepartement')->name('app-structural-delete-sub-departement');
     });
 
     Route::controller(ExcelController::class)->group(function () {

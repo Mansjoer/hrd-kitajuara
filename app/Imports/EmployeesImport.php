@@ -26,7 +26,7 @@ class EmployeesImport implements ToCollection, WithHeadingRow
                 'slug' => Str::slug($row['nama_karyawan'], '-')
             ], [
                 'nik' => $row['nik'],
-                'name' => $row['nama_karyawan'],
+                'name' => strtolower($row['nama_karyawan']),
                 'email' => $row['email'],
                 'password' => bcrypt('123456'),
                 'role_id' => 1,
@@ -41,8 +41,8 @@ class EmployeesImport implements ToCollection, WithHeadingRow
                 'slug' => Str::slug($row['nama_karyawan'], '-')
             ], [
                 'nik' => $row['nik'],
-                'name' => $row['nama_karyawan'],
-                'username' => $row['nama_panggilan'],
+                'name' => strtolower($row['nama_karyawan']),
+                'username' => strtolower($row['nama_panggilan']),
                 'place_of_birth' => $row['tempat_lahir'],
                 'date_of_birth' => \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['tanggal_lahir']),
                 'gender' => $row['jenis_kelamin'],

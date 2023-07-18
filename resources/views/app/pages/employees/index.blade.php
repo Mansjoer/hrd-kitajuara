@@ -64,7 +64,7 @@
                     <table class="table" id="tableEmployees">
                         <thead>
                             <tr>
-                                <th class="text-center "><button class="table-sort" data-sort="sort-nik">NIK</th>
+                                <th class="text-center"><button class="table-sort" data-sort="sort-nik">NIK</th>
                                 <th><button class="table-sort" data-sort="sort-nama">Nama</button></th>
                                 <th class="d-none d-sm-block"><button class="table-sort" data-sort="sort-cabang">Cabang</button></th>
                                 <th><button class="table-sort" data-sort="sort-departemen">Departemen</button></th>
@@ -76,7 +76,7 @@
                             @forelse ($employees->sortBy('nik') as $employee)
                                 <tr class="data">
                                     <td class="text-center sort-nik ">{{ Str::upper($employee->nik) }}</td>
-                                    <td class="sort-nama"><strong>{{ strtolower(ucfirst($employee->user->name)) }}</strong></td>
+                                    <td class="sort-nama"><strong>{{ $employee->user->name }}</strong></td>
                                     @if ($employee->branch != null)
                                         <td class="sort-cabang d-none d-sm-block">{{ $employee->branch->name }}</td>
                                     @else
