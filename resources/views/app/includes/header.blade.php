@@ -14,6 +14,9 @@
                 <h2 class="page-title">
                     {{ $site_setting['subtitle']->value }}
                 </h2>
+                <h5 class="page-pretitle">
+                    Administrator
+                </h5>
             </a>
         </h1>
         <div class="navbar-nav flex-row order-md-last">

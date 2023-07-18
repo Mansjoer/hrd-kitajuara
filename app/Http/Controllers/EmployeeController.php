@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Branch;
@@ -19,18 +18,23 @@ class EmployeeController extends Controller
     {
         if ($request->has('search')) {
             $data = $request->search;
-            $employees = Employee::join('users', 'employees.user_id', '=', 'users.id')
-                ->join('branches', 'employees.branch_id', '=', 'branches.id')
-                ->join('departements', 'employees.departement_id', '=', 'departements.id')
-                ->where('users.nik', 'LIKE', "%" . $request->search . "%")
-                ->orWhere('users.name', 'LIKE', "%" . $request->search . "%")
-                ->orWhere('branches.name', 'LIKE', "%" . $request->search . "%")
-                ->orWhere('position', 'LIKE', "%" . $request->search . "%")
-                ->orWhere('departements.name', 'LIKE', "%" . $request->search . "%")
+            $employees = Employee::where('nik', 'LIKE', "%" . $data . "%")
+                ->orWhere('name', 'LIKE', "%" . $data . "%")
+                ->orWhere('username', 'LIKE', "%" . $data . "%")
+                ->orWhere('position', 'LIKE', "%" . $data . "%")
+                ->orWhereHas('branch', function ($q) use ($data) {
+                    $q->where('name', 'LIKE', "%" . $data . "%");
+                })
+                ->orWhereHas('departement', function ($q) use ($data) {
+                    $q->where('name', 'LIKE', "%" . $data . "%");
+                })
+                ->orWhereHas('subDepartement', function ($q) use ($data) {
+                    $q->where('name', 'LIKE', "%" . $data . "%");
+                })
                 ->paginate(10);
         } else {
             $data = '';
-            $employees = Employee::select('*')->paginate(10);
+            $employees = Employee::paginate(10);
         }
         return view('app.pages.employees.index', compact('employees', 'data'));
     }
@@ -68,6 +72,12 @@ class EmployeeController extends Controller
 
         $user = User::where('slug', $slug)->first();
 
+        if ($request->end_contract_at != null) {
+            $end_contract_at = Date::createFromFormat('d F Y', $request->end_contract_at);
+        } else {
+            $end_contract_at = null;
+        }
+
         $user->update([
             'nik' => strtoupper($request->nik),
             'name' => $request->name,
@@ -101,7 +111,7 @@ class EmployeeController extends Controller
             'joined_at' => Date::createFromFormat('d F Y', $request->joined_at),
             'status' => $request->status,
             'start_contract_at' => Date::createFromFormat('d F Y', $request->start_contract_at),
-            'end_contract_at' => Date::createFromFormat('d F Y', $request->end_contract_at),
+            'end_contract_at' => $end_contract_at,
             'saldoCuti' => $request->saldoCuti,
             'slug' => Str::slug($request->name, '-')
         ]);
@@ -111,6 +121,14 @@ class EmployeeController extends Controller
 
     public function postcreate(Request $request)
     {
+        Date::setLocale('id');
+
+        if ($request->end_contract_at != null) {
+            $end_contract_at = Date::createFromFormat('d F Y', $request->end_contract_at);
+        } else {
+            $end_contract_at = null;
+        }
+
         $users = new User();
         $users->nik = $request->nik;
         $users->name = $request->name;
@@ -147,7 +165,7 @@ class EmployeeController extends Controller
         $em->joined_at = Date::createFromFormat('d F Y', $request->joined_at);
         $em->status = $request->status;
         $em->start_contract_at = Date::createFromFormat('d F Y', $request->start_contract_at);
-        $em->end_contract_at = Date::createFromFormat('d F Y', $request->end_contract_at);
+        $em->end_contract_at = $end_contract_at;
         $em->user_id = $users->id;
         $em->slug = Str::slug($request->name, '-');
         $em->save();

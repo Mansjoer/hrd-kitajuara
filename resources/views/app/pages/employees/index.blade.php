@@ -37,7 +37,7 @@
                 <div class="me-1 d-none d-md-block">
                     <form action="" method="GET" autocomplete="off" novalidate spellcheck="false" autocomplete="off">
                         <div class="input-icon">
-                            <input type="text" name="search" class="form-control" placeholder="Cari Karyawan..." value="{{ $data }}" @if ($data) autofocus @endif />
+                            <input type="text" name="search" class="form-control" placeholder="Cari Karyawan..." @if (Session::get('search')) autofocus @endif />
                             <span class="input-icon-addon">
                                 <i class="ti ti-search icon"></i>
                             </span>
@@ -173,10 +173,6 @@
 
 @section('cscript')
     <script>
-        // $('#inputUploadFiles').on('change', function() {
-        //     $('#formUploadFiles').submit();
-        // });
-
         document.addEventListener("DOMContentLoaded", function() {
             const list = new List('table-employee', {
                 sortClass: 'table-sort',

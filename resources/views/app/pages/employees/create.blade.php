@@ -284,7 +284,7 @@
                                 <div class="col-lg-4">
                                     <div class="mb-3">
                                         <label class="form-label">Tanggal Kontrak Berakhir</label>
-                                        <input class="form-control mb-2 datepicker" name="end_contract_at" id="datepicker4" value="{{ \Carbon\Carbon::now() }}" />
+                                        <input class="form-control mb-2 datepicker" name="end_contract_at" id="datepicker4" value="" />
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
