@@ -242,7 +242,7 @@
                                         <label class="form-label">Perusahaan</label>
                                         <select name="company" type="text" class="form-select tomSelect" placeholder="Pilih perusahaan...">
                                             <option value=""></option>
-                                            <option value="PT KITA JUARA ELOK NUSANTARA">PT KITA JUARA ELOK NUSANTARA</option>
+                                            <option value="PT JUARA ELOK NUSANTARA">PT JUARA ELOK NUSANTARA</option>
                                             <option value="CV GEMILANG WIRATAMA NUSANTARA">CV GEMILANG WIRATAMA NUSANTARA</option>
                                         </select>
                                     </div>
