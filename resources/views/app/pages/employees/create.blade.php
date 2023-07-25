@@ -119,7 +119,7 @@
                                         <option value=""></option>
                                         <option value="SD">SD / Sederajat</option>
                                         <option value="SMP">SMP / Sederajat</option>
-                                        <option value="SMA">SMA / SMK / Sederajat</option>
+                                        <option value="SMA/SMK">SMA / SMK / Sederajat</option>
                                         <option value="D3">D3</option>
                                         <option value="S1">S1</option>
                                         <option value="S2">S2</option>

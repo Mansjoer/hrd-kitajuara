@@ -130,7 +130,7 @@
                                         <option value="" {{ $user->employee->education == null ? 'selected' : '' }}></option>
                                         <option value="SD" {{ $user->employee->education == 'SD' ? 'selected' : '' }}>SD / Sederajat</option>
                                         <option value="SMP" {{ $user->employee->education == 'SMP' ? 'selected' : '' }}>SMP / Sederajat</option>
-                                        <option value="SMA" {{ $user->employee->education == 'SMA' ? 'selected' : '' }}>SMA / Sederajat</option>
+                                        <option value="SMA/SMK" {{ $user->employee->education == 'SMA/SMK' ? 'selected' : '' }}>SMA / SMK / Sederajat</option>
                                         <option value="D3" {{ $user->employee->education == 'D3' ? 'selected' : '' }}>D3 / Sederajat</option>
                                         <option value="S1" {{ $user->employee->education == 'S1' ? 'selected' : '' }}>S1 / Sederajat</option>
                                         <option value="S2" {{ $user->employee->education == 'S2' ? 'selected' : '' }}>S2 / Sederajat</option>

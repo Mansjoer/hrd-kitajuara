@@ -97,6 +97,7 @@ class EmployeeController extends Controller
             'date_of_birth' => Date::createFromFormat('d F Y', $request->dateBirth),
             'address' => $request->address,
             'address2' => $request->address2,
+            'education' => $request->education,
             'ktp' => $request->ktp,
             'npwp' => $request->npwp,
             'bpjs' => $request->bpjs,
@@ -151,6 +152,7 @@ class EmployeeController extends Controller
         $em->date_of_birth = Date::createFromFormat('d F Y', $request->dateBirth);
         $em->address = $request->address;
         $em->address2 = $request->address2;
+        $em->education = $request->education;
         $em->ktp = $request->ktp;
         $em->npwp = $request->npwp;
         $em->bpjs = $request->bpjs;
