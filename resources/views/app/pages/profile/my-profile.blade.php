@@ -74,7 +74,7 @@
                             @if (Auth::user()->employee->profile_path == null)
                                 <span class="avatar avatar-xl" id="avatarPlaceholder" style="background-image: url('https://app.kitajuara.co.id/custom/img/user-default.webp')"></span>
                             @else
-                                <span class="avatar avatar-xl" id="avatarPlaceholder" style="background-image: url('/{{ Auth::user()->employee->profile_path }}')"></span>
+                                <span class="avatar avatar-xl" id="avatarPlaceholder" style="background-image: url('https://app.kitajuara.co.id/{{ Auth::user()->employee->profile_path }}')"></span>
                             @endif
                         </div>
                         <div class="col-auto">

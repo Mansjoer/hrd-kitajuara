@@ -66,7 +66,7 @@
                             @if (is_null($user->employee->profile_path))
                                 <span class="avatar avatar-xl" id="avatarPlaceholder" style="background-image: url('https://app.kitajuara.co.id/custom/img/user-default.webp')"></span>
                             @else
-                                <span class="avatar avatar-xl" id="avatarPlaceholder" style="background-image: url('/{{ $user->employee->profile_path }}')"></span>
+                                <span class="avatar avatar-xl" id="avatarPlaceholder" style="background-image: url('https://app.kitajuara.co.id/{{ $user->employee->profile_path }}')"></span>
                             @endif
                         </div>
                         <div class="col-auto">
