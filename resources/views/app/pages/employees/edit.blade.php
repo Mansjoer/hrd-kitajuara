@@ -243,7 +243,7 @@
                                         <select name="subDepartement" type="text" class="form-select tomSelect" placeholder="Pilih sub departemen...">
                                             <option value="" {{ $user->employee->sub_departement_id == null ? 'selected' : '' }}></option>
                                             @foreach ($subDepartements as $subdepartement)
-                                                <option value="{{ $subdepartement->id }}" {{ $user->employee->departement_id == $subdepartement->id ? 'selected' : '' }}>{{ $subdepartement->name }}</option>
+                                                <option value="{{ $subdepartement->id }}" {{ $user->employee->sub_departement_id == $subdepartement->id ? 'selected' : '' }}>{{ $subdepartement->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>

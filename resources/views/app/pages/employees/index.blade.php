@@ -76,7 +76,7 @@
                             </tr>
                         </thead>
                         <tbody class="table-tbody">
-                            @forelse ($employees->sortBy('nik') as $employee)
+                            @forelse ($employees->sortByDesc('nik') as $employee)
                                 <tr class="data">
                                     <td class="text-center sort-nik ">{{ Str::upper($employee->nik) }}</td>
                                     <td class="sort-nama"><strong>{{ $employee->user->name }}</strong></td>
