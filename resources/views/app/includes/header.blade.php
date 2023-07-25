@@ -100,7 +100,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                         <a href="{{ route('app-my-profile') }}" class="dropdown-item">Profile</a>
-                        <a href="./settings.html" class="dropdown-item">Settings</a>
+                        {{-- <a href="./settings.html" class="dropdown-item">Settings</a> --}}
                         <div class="dropdown-divider"></div>
                         <a href="{{ route('app-auth-logout') }}" class="dropdown-item">Logout</a>
                     </div>

@@ -18,7 +18,11 @@
         <!-- Page title actions -->
         <div class="col-auto ms-auto d-print-none">
             <div class="btn-list">
-                <button class="btn btn-outline-lime d-none d-sm-inline-block me-1" data-bs-toggle="modal" data-bs-target="#modalImportEmployees">
+                <button class="btn btn-outline-warning d-none d-sm-inline-block me-1" data-bs-toggle="modal" data-bs-target="#modalImportEmployees" disabled>
+                    <i class="ti ti-tool icon"></i>
+                    Import & Export is Under Maintenance
+                </button>
+                {{-- <button class="btn btn-outline-lime d-none d-sm-inline-block me-1" data-bs-toggle="modal" data-bs-target="#modalImportEmployees">
                     <i class="ti ti-cloud-upload icon"></i>
                     Upload
                 </button>
@@ -28,12 +32,11 @@
                         Download
                     </a>
                     <div class="dropdown-menu">
-                        {{-- <a class="dropdown-item" href="{{ route('app-export-pdf-employees') }}">PDF</a> --}}
                         <a class="dropdown-item" href="{{ route('app-download-format-employees') }}">Format / Template</a>
                         <a class="dropdown-item" href="{{ route('app-export-csv-employees') }}">Csv</a>
                         <a class="dropdown-item" href="{{ route('app-export-excel-employees') }}">Excel</a>
                     </div>
-                </div>
+                </div> --}}
                 <div class="me-1 d-none d-md-block">
                     <form action="" method="GET" autocomplete="off" novalidate spellcheck="false" autocomplete="off">
                         <div class="input-icon">

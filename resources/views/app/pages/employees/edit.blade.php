@@ -116,8 +116,8 @@
                                     <label class="form-label">Status Pernikahan</label>
                                     <select name="maritalStatus" type="text" class="form-select tomSelect" placeholder="Pilih status pernikahan...">
                                         <option value="" {{ $user->employee->marital_status == null ? 'selected' : '' }}></option>
-                                        <option value="Belum Kawin" {{ $user->employee->marital_status == 'Belum Kawin' ? 'selected' : '' }}>Belum Kawin</option>
-                                        <option value="Kawin" {{ $user->employee->marital_status == 'Kawin' ? 'selected' : '' }}>Kawin</option>
+                                        <option value="Belum Menikah" {{ $user->employee->marital_status == 'Belum Menikah' ? 'selected' : '' }}>Belum Menikah</option>
+                                        <option value="Menikah" {{ $user->employee->marital_status == 'Menikah' ? 'selected' : '' }}>Menikah</option>
                                         <option value="Cerai Hidup" {{ $user->employee->marital_status == 'Cerai Hidup' ? 'selected' : '' }}>Cerai Hidup</option>
                                         <option value="Cerai Mati" {{ $user->employee->marital_status == 'Cerai Mati' ? 'selected' : '' }}>Cerai Mati</option>
                                     </select>

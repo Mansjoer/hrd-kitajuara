@@ -53,6 +53,16 @@
                             </span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0);">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                <i class="ti ti-adjustments-alt icon"></i>
+                            </span>
+                            <span class="nav-link-title">
+                                Pengaturan
+                            </span>
+                        </a>
+                    </li>
                     {{-- @if (Auth::user()->isAdmin == 1)
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">

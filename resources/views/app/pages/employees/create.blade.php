@@ -105,8 +105,8 @@
                                     <label class="form-label">Status Pernikahan</label>
                                     <select name="maritalStatus" type="text" class="form-select tomSelect" placeholder="Pilih status pernikahan...">
                                         <option value=""></option>
-                                        <option value="Belum Kawin">Belum Kawin</option>
-                                        <option value="Kawin">Kawin</option>
+                                        <option value="Belum Menikah">Belum Menikah</option>
+                                        <option value="Menikah">Menikah</option>
                                         <option value="Cerai Hidup">Cerai Hidup</option>
                                         <option value="Cerai Mati">Cerai Mati</option>
                                     </select>
@@ -118,8 +118,8 @@
                                     <select name="education" type="text" class="form-select tomSelect" placeholder="Pilih status pernikahan...">
                                         <option value=""></option>
                                         <option value="SD">SD / Sederajat</option>
-                                        <option value="SMP">SMP</option>
-                                        <option value="SMA">SMA</option>
+                                        <option value="SMP">SMP / Sederajat</option>
+                                        <option value="SMA">SMA / SMK / Sederajat</option>
                                         <option value="D3">D3</option>
                                         <option value="S1">S1</option>
                                         <option value="S2">S2</option>
@@ -242,7 +242,7 @@
                                         <label class="form-label">Perusahaan</label>
                                         <select name="company" type="text" class="form-select tomSelect" placeholder="Pilih perusahaan...">
                                             <option value=""></option>
-                                            <option value="PT KITA JUARA ELOK NUSANTARA">PT KITA JUARA NUSANTARA</option>
+                                            <option value="PT KITA JUARA ELOK NUSANTARA">PT KITA JUARA ELOK NUSANTARA</option>
                                             <option value="CV GEMILANG WIRATAMA NUSANTARA">CV GEMILANG WIRATAMA NUSANTARA</option>
                                         </select>
                                     </div>
@@ -269,8 +269,11 @@
                                         <label class="form-label">Status Kerja</label>
                                         <select name="status" type="text" class="form-select tomSelect" placeholder="Pilih status kerja...">
                                             <option value=""></option>
-                                            <option value="Kontrak">Kontrak</option>
-                                            <option value="Permanen / Tetap">Permanen / Tetap</option>
+                                            <option value="TETAP/ PKWTT">TETAP/ PKWTT</option>
+                                            <option value="KONTRAK/ PKWT">KONTRAK/ PKWT</option>
+                                            <option value="MITRA">MITRA</option>
+                                            <option value="PEKERJA HARIAN LEPAS">PEKERJA HARIAN LEPAS</option>
+                                            <option value="TRAINEE">TRAINEE</option>
                                             <option value="Lainnya">Lainnya</option>
                                         </select>
                                     </div>
