@@ -79,7 +79,7 @@
                             @forelse ($employees as $employee)
                                 <tr class="data">
                                     <td class="text-center sort-nik ">{{ Str::upper($employee->nik) }}</td>
-                                    <td class="sort-nama" title="{{ $employee->user->name }}" data-bs-toggle="tooltip" data-bs-placement="top"><strong>{{ Str::upper(Str::limit($employee->user->name, 20, '...')) }}</strong></td>
+                                    <td class="sort-nama" title="{{ Str::upper($employee->user->name) }}" data-bs-toggle="tooltip" data-bs-placement="top"><strong>{{ Str::upper(Str::limit($employee->user->name, 20, '...')) }}</strong></td>
                                     @if ($employee->branch != null)
                                         <td class="sort-cabang d-none d-sm-block">{{ $employee->branch->name }}</td>
                                     @else
