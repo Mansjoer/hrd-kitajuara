@@ -34,7 +34,7 @@ class EmployeeController extends Controller
                 ->paginate(10);
         } else {
             $data = '';
-            $employees = Employee::paginate(10);
+            $employees = Employee::orderBy('nik')->paginate(10);
         }
         return view('app.pages.employees.index', compact('employees', 'data'));
     }

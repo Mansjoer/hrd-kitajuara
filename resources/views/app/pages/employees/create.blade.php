@@ -280,7 +280,7 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="mb-3">
-                                        <label class="form-label">Tanggal Kontrak Awal</label>
+                                        <label class="form-label">Tanggal Kontrak Awal / Tanggal Tetap</label>
                                         <input class="form-control mb-2 datepicker" name="start_contract_at" id="datepicker3" value="{{ \Carbon\Carbon::now() }}" />
                                     </div>
                                 </div>
