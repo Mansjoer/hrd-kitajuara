@@ -105,7 +105,7 @@
                             @foreach ($attendances->sortByDesc('created_at') as $attendance)
                                 <div class="list-group-item border mb-3">
                                     <div class="row g-2 align-items-center">
-                                        <div class="col">
+                                        <div class="col-5">
                                             {{ \Carbon\Carbon::parse($attendance->created_at)->format('d F, Y') }} - {{ \Carbon\Carbon::parse($attendance->created_at)->format('H:i') }}
                                             <div class="text-muted ">
                                                 @if ($attendance->branch_id != null)
@@ -122,7 +122,7 @@
                                         {{-- <div class="col-auto text-muted">
                                             {{ \Carbon\Carbon::parse($attendance->created_at)->format('H:i') }}
                                         </div> --}}
-                                        <div class="col-auto">
+                                        <div class="col-2">
                                             <span data-bs-toggle="tooltip" data-bs-placement="top" title="Lihat lebih detail...">
                                                 <a href="#" class="link-secondary" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#modalAttendanceInfo{{ $attendance->id }}">
                                                     <i class="ti ti-eye icon"></i>
@@ -167,7 +167,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane active show" id="tabs-lokasi-masuk{{ $attendance->id }}">
                                     <div class="card card-sm mb-4">
-                                        <div class="img-responsive" style="background-image: url('/{{ $attendance->in_picturePath }}');"></div>
+                                        <div class="img-responsive" style="background-image: url('https://app.kitajuara.co.id/{{ $attendance->in_picturePath }}');"></div>
                                     </div>
                                     <div class="card card-sm">
                                         <div class="card-body">
@@ -200,7 +200,7 @@
                                 <div class="tab-pane" id="tabs-lokasi-pulang{{ $attendance->id }}">
                                     @if ($attendance->outTime != null)
                                         <div class="card card-sm mb-4">
-                                            <div class="img-responsive" style="background-image: url('/{{ $attendance->out_picturePath }}');"></div>
+                                            <div class="img-responsive" style="background-image: url('https://app.kitajuara.co.id/{{ $attendance->out_picturePath }}');"></div>
                                         </div>
                                         <div class="card card-sm">
                                             <div class="card-body">
@@ -216,6 +216,9 @@
                                                 </div>
                                                 <div class="mb-2">
                                                     <strong>Gmaps :</strong> <a href="{{ $attendance->in_gmapsLink }}" target="_blank" rel="noopener noreferrer">Lihat</a>
+                                                </div>
+                                                <div class="mb-2">
+                                                    <strong>Note :</strong> {{ $attendance->in_note ? $attendance->in_note : '-' }}
                                                 </div>
                                             </div>
                                         </div>
