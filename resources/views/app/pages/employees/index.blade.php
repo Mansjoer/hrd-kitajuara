@@ -87,13 +87,13 @@
                                     @endif
 
                                     @if ($employee->departement != null)
-                                        <td class="sort-departemen">{{ $employee->departement->name }}</td>
+                                        <td class="sort-departemen" title="{{ $employee->departement->name }}" data-bs-toggle="tooltip" data-bs-placement="top">{{ Str::limit($employee->departement->name, 20, '...') }}</td>
                                     @else
                                         <td class="sort-departemen">-</td>
                                     @endif
 
                                     @if ($employee->position != null)
-                                        <td class="sort-jabatan" title="{{ $employee->position }}" data-bs-toggle="tooltip" data-bs-placement="left">{{ Str::limit($employee->position, 20, '...') }}</td>
+                                        <td class="sort-jabatan" title="{{ $employee->position }}" data-bs-toggle="tooltip" data-bs-placement="top">{{ Str::limit($employee->position, 20, '...') }}</td>
                                     @else
                                         <td class="sort-jabatan">-</td>
                                     @endif
