@@ -105,7 +105,7 @@
                             @foreach ($attendances->sortByDesc('created_at') as $attendance)
                                 <div class="list-group-item border mb-3">
                                     <div class="row g-2 align-items-center">
-                                        <div class="col-10">
+                                        <div class="col">
                                             {{ \Carbon\Carbon::parse($attendance->created_at)->format('d F, Y') }} - {{ \Carbon\Carbon::parse($attendance->created_at)->format('H:i') }}
                                             <div class="text-muted ">
                                                 @if ($attendance->branch_id != null)
