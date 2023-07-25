@@ -93,7 +93,7 @@
                                     @endif
 
                                     @if ($employee->position != null)
-                                        <td class="sort-jabatan">{{ $employee->position }}</td>
+                                        <td class="sort-jabatan">{{ Str::limit($employee->position, 20, '...') }}</td>
                                     @else
                                         <td class="sort-jabatan">-</td>
                                     @endif
