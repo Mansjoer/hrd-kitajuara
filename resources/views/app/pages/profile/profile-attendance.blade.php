@@ -105,7 +105,7 @@
                             @foreach ($attendances->sortByDesc('created_at') as $attendance)
                                 <div class="list-group-item border mb-3">
                                     <div class="row g-2 align-items-center">
-                                        <div class="col-5">
+                                        <div class="col-8">
                                             {{ \Carbon\Carbon::parse($attendance->created_at)->format('d F, Y') }} - {{ \Carbon\Carbon::parse($attendance->created_at)->format('H:i') }}
                                             <div class="text-muted ">
                                                 @if ($attendance->branch_id != null)
@@ -122,7 +122,7 @@
                                         {{-- <div class="col-auto text-muted">
                                             {{ \Carbon\Carbon::parse($attendance->created_at)->format('H:i') }}
                                         </div> --}}
-                                        <div class="col-2">
+                                        <div class="col-auto">
                                             <span data-bs-toggle="tooltip" data-bs-placement="top" title="Lihat lebih detail...">
                                                 <a href="#" class="link-secondary" style="text-decoration: none;" data-bs-toggle="modal" data-bs-target="#modalAttendanceInfo{{ $attendance->id }}">
                                                     <i class="ti ti-eye icon"></i>
