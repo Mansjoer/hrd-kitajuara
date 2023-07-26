@@ -60,7 +60,7 @@
     <div class="row row-deck row-cards">
         <div class="col-12">
             <div class="row row-cards">
-                <div class="col-sm-6 col-lg-3">
+                <div class="col-sm-6 col-lg-4">
                     <div class="card card-sm">
                         <div class="card-body">
                             <div class="row align-items-center">
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
+                <div class="col-sm-6 col-lg-4">
                     <div class="card card-sm">
                         <div class="card-body">
                             <div class="row align-items-center">
@@ -115,7 +115,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
+                <div class="col-sm-6 col-lg-4">
                     <div class="card card-sm">
                         <div class="card-body">
                             <div class="row align-items-center">
@@ -157,9 +157,9 @@
                             <tr>
                                 <th class="text-center"><button class="table-sort" data-sort="sort-nik">NIK</th>
                                 <th><button class="table-sort" data-sort="sort-nama">Nama</button></th>
-                                <th class="d-none d-sm-block"><button class="table-sort" data-sort="sort-cabang">Cabang</button></th>
-                                <th><button class="table-sort" data-sort="sort-departemen">Departemen</button></th>
                                 <th><button class="table-sort" data-sort="sort-jabatan">Jabatan</button></th>
+                                <th><button class="table-sort" data-sort="sort-departemen">Departemen</button></th>
+                                <th><button class="table-sort" data-sort="sort-sub-departemen">Sub Departemen</button></th>
                                 <th class="text-center d-print-none" style="width: 5%">Actions</th>
                             </tr>
                         </thead>
@@ -168,10 +168,11 @@
                                 <tr class="data">
                                     <td class="text-center sort-nik {{ $employee->user->status == 1 ? 'text-success' : 'text-danger' }}" title="{{ $employee->user->status == 1 ? Str::upper('Aktif') : Str::upper('Tidak Aktif') }}" data-bs-toggle="tooltip" data-bs-placement="top">{{ Str::upper($employee->nik) }}</td>
                                     <td class="sort-nama" title="{{ Str::upper($employee->user->name) }}" data-bs-toggle="tooltip" data-bs-placement="top"><strong>{{ Str::upper(Str::limit($employee->user->name, 20, '...')) }}</strong></td>
-                                    @if ($employee->branch != null)
-                                        <td class="sort-cabang d-nontitle="{{ Str::upper($employee->user->name) }}" data-bs-toggle="tooltip" data-bs-placement="top"e d-sm-block">{{ $employee->branch->name }}</td>
+
+                                    @if ($employee->position != null)
+                                        <td class="sort-jabatan" title="{{ $employee->position }}" data-bs-toggle="tooltip" data-bs-placement="top">{{ Str::limit($employee->position, 20, '...') }}</td>
                                     @else
-                                        <td class="sort-cabang d-none d-sm-block">-</td>
+                                        <td class="sort-jabatan">-</td>
                                     @endif
 
                                     @if ($employee->departement != null)
@@ -180,10 +181,10 @@
                                         <td class="sort-departemen">-</td>
                                     @endif
 
-                                    @if ($employee->position != null)
-                                        <td class="sort-jabatan" title="{{ $employee->position }}" data-bs-toggle="tooltip" data-bs-placement="top">{{ Str::limit($employee->position, 20, '...') }}</td>
+                                    @if ($employee->subDepartement != null)
+                                        <td class="sort-sub-departemen "{{ Str::upper($employee->user->name) }}" data-bs-toggle="tooltip" data-bs-placement="top"e d-sm-block">{{ $employee->subDepartement->name }}</td>
                                     @else
-                                        <td class="sort-jabatan">-</td>
+                                        <td class="sort-sub-departemen ">-</td>
                                     @endif
 
                                     @if ($employee->nik == Auth::user()->nik)
@@ -268,7 +269,7 @@
             const list = new List('table-employee', {
                 sortClass: 'table-sort',
                 listClass: 'table-tbody',
-                valueNames: ['sort-nik', 'sort-nama', 'sort-cabang', 'sort-departemen', 'sort-jabatan']
+                valueNames: ['sort-nik', 'sort-nama', 'sort-sub-departemen', 'sort-departemen', 'sort-jabatan']
             });
         });
     </script>
