@@ -265,7 +265,7 @@
                                         <div class="empty">
                                             <p class="empty-title">Karyawan tidak ditemukan</p>
                                             <p class="empty-subtitle text-muted">
-                                                Try adjusting your search or filter to find what you're looking for.
+                                                Coba sesuaikan pencarian atau filter kamu untuk menemukan apa yang kamu cari.
                                             </p>
                                         </div>
 
