@@ -62,82 +62,107 @@
             <div class="row row-cards">
                 <div class="col-sm-6 col-lg-4">
                     <div class="card card-sm">
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-auto">
-                                    <span class="bg-yellow-lt avatar">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users-group" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
-                                            <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"></path>
-                                            <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
-                                            <path d="M17 10h2a2 2 0 0 1 2 2v1"></path>
-                                            <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
-                                            <path d="M3 13v-1a2 2 0 0 1 2 -2h2"></path>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="col">
-                                    <div class="font-weight-medium">
-                                        Total Karyawan
+                        <div class="card-header">
+                            <div>
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <span class="bg-primary-lt avatar">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+                                                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                                <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
+                                            </svg>
+                                        </span>
                                     </div>
-                                    <div class="text-muted">
-                                        {{ $users->count() }}
+                                    <div class="col">
+                                        <div class="card-title">{{ $users->count() }}</div>
+                                        <div class="card-subtitle"><small>{{ Str::upper('Total Karyawan') }}</small></div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="card-actions">
+                                <a href="{{ route('app-employees') }}" class="btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-filter-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M11.36 20.213l-2.36 .787v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414"></path>
+                                        <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                        <path d="M20.2 20.2l1.8 1.8"></path>
+                                    </svg>
+                                    Filter
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-4">
                     <div class="card card-sm">
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-auto">
-                                    <span class="bg-teal-lt avatar">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
-                                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
-                                            <path d="M15 19l2 2l4 -4"></path>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="col">
-                                    <div class="font-weight-medium">
-                                        Total Karyawan Aktif
+                        <div class="card-header">
+                            <div>
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <span class="bg-teal-lt avatar">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+                                                <path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
+                                                <path d="M15 19l2 2l4 -4"></path>
+                                            </svg>
+                                        </span>
                                     </div>
-                                    <div class="text-muted">
-                                        {{ $countActiveUser->count() }}
+                                    <div class="col">
+                                        <div class="card-title">{{ $countActiveUser->count() }}</div>
+                                        <div class="card-subtitle"><small>Total Karyawan Aktif</small></div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="card-actions">
+                                <a href="{{ route('app-employees') . '?status=aktif' }}" class="btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-filter-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M11.36 20.213l-2.36 .787v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414"></path>
+                                        <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                        <path d="M20.2 20.2l1.8 1.8"></path>
+                                    </svg>
+                                    Filter
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-4">
                     <div class="card card-sm">
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-auto">
-                                    <span class="bg-danger-lt avatar">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
-                                            <path d="M6 21v-2a4 4 0 0 1 4 -4h3.5"></path>
-                                            <path d="M22 22l-5 -5"></path>
-                                            <path d="M17 22l5 -5"></path>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="col">
-                                    <div class="font-weight-medium">
-                                        Total Karyawan Tidak Aktif
+                        <div class="card-header">
+                            <div>
+                                <div class="row align-items-center">
+                                    <div class="col-auto">
+                                        <span class="bg-danger-lt avatar">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+                                                <path d="M6 21v-2a4 4 0 0 1 4 -4h3.5"></path>
+                                                <path d="M22 22l-5 -5"></path>
+                                                <path d="M17 22l5 -5"></path>
+                                            </svg>
+                                        </span>
                                     </div>
-                                    <div class="text-muted">
-                                        {{ $countUnactiveUser->count() }}
+                                    <div class="col">
+                                        <div class="card-title">{{ $countUnactiveUser->count() }}</div>
+                                        <div class="card-subtitle"><small>Total Karyawan Tidak Aktif</small></div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="card-actions">
+                                <a href="{{ route('app-employees') . '?status=tidak aktif' }}" class="btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-filter-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M11.36 20.213l-2.36 .787v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414"></path>
+                                        <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                                        <path d="M20.2 20.2l1.8 1.8"></path>
+                                    </svg>
+                                    Filter
+                                </a>
                             </div>
                         </div>
                     </div>

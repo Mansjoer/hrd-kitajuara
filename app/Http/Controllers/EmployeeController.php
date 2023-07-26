@@ -36,6 +36,12 @@ class EmployeeController extends Controller
                     $q->where('name', 'LIKE', "%" . $data . "%");
                 })
                 ->paginate(10);
+        } elseif ($request->has('status') && $request['status'] == "aktif") {
+            $data = '';
+            $employees = Employee::whereRelation('user', 'status', '=', 1)->paginate(10);
+        } elseif ($request->has('status') && $request['status'] = 'Tidak Aktif') {
+            $data = '';
+            $employees = Employee::whereRelation('user', 'status', '=', 0)->paginate(10);
         } else {
             $data = '';
             $employees = Employee::orderBy('nik')->paginate(10);
