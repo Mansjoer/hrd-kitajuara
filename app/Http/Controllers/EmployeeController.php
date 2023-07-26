@@ -16,6 +16,10 @@ class EmployeeController extends Controller
 {
     public function index(Request $request)
     {
+        $users = User::all();
+        $countActiveUser = User::where('status', 1)->get();
+        $countUnactiveUser = User::where('status', 0)->get();
+
         if ($request->has('search')) {
             $data = $request->search;
             $employees = Employee::where('nik', 'LIKE', "%" . $data . "%")
@@ -36,7 +40,7 @@ class EmployeeController extends Controller
             $data = '';
             $employees = Employee::orderBy('nik')->paginate(10);
         }
-        return view('app.pages.employees.index', compact('employees', 'data'));
+        return view('app.pages.employees.index', compact('employees', 'data', 'users', 'countActiveUser', 'countUnactiveUser'));
     }
 
     public function downloadFormat()
@@ -83,6 +87,7 @@ class EmployeeController extends Controller
             'name' => $request->name,
             'email' => $request->email . '@dbeautyhouse.co.id',
             'isAdmin' => $request->isAdmin,
+            'status' => $request->isStatus,
             'slug' => Str::slug($request->name, '-')
         ]);
         $user->employee->update([

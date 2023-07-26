@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcumb')
-    <div class="row g-2 align-items-center">
+    <div class="row g-2 align-items-center mb-4">
         <div class="col">
             <!-- Page pre-title -->
             <div class="page-pretitle">
@@ -57,6 +57,94 @@
             </div>
         </div>
     </div>
+    <div class="row row-deck row-cards">
+        <div class="col-12">
+            <div class="row row-cards">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card card-sm">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <span class="bg-yellow-lt avatar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users-group" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                            <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1"></path>
+                                            <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                            <path d="M17 10h2a2 2 0 0 1 2 2v1"></path>
+                                            <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                            <path d="M3 13v-1a2 2 0 0 1 2 -2h2"></path>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <div class="font-weight-medium">
+                                        Total Karyawan
+                                    </div>
+                                    <div class="text-muted">
+                                        {{ $users->count() }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card card-sm">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <span class="bg-teal-lt avatar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+                                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4"></path>
+                                            <path d="M15 19l2 2l4 -4"></path>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <div class="font-weight-medium">
+                                        Total Karyawan Aktif
+                                    </div>
+                                    <div class="text-muted">
+                                        {{ $countActiveUser->count() }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card card-sm">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <span class="bg-danger-lt avatar">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-x" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0"></path>
+                                            <path d="M6 21v-2a4 4 0 0 1 4 -4h3.5"></path>
+                                            <path d="M22 22l-5 -5"></path>
+                                            <path d="M17 22l5 -5"></path>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <div class="font-weight-medium">
+                                        Total Karyawan Tidak Aktif
+                                    </div>
+                                    <div class="text-muted">
+                                        {{ $countUnactiveUser->count() }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('content')
@@ -78,10 +166,10 @@
                         <tbody class="table-tbody">
                             @forelse ($employees as $employee)
                                 <tr class="data">
-                                    <td class="text-center sort-nik ">{{ Str::upper($employee->nik) }}</td>
+                                    <td class="text-center sort-nik {{ $employee->user->status == 1 ? 'text-success' : 'text-danger' }}" title="{{ $employee->user->status == 1 ? Str::upper('Aktif') : Str::upper('Tidak Aktif') }}" data-bs-toggle="tooltip" data-bs-placement="top">{{ Str::upper($employee->nik) }}</td>
                                     <td class="sort-nama" title="{{ Str::upper($employee->user->name) }}" data-bs-toggle="tooltip" data-bs-placement="top"><strong>{{ Str::upper(Str::limit($employee->user->name, 20, '...')) }}</strong></td>
                                     @if ($employee->branch != null)
-                                        <td class="sort-cabang d-none d-sm-block">{{ $employee->branch->name }}</td>
+                                        <td class="sort-cabang d-nontitle="{{ Str::upper($employee->user->name) }}" data-bs-toggle="tooltip" data-bs-placement="top"e d-sm-block">{{ $employee->branch->name }}</td>
                                     @else
                                         <td class="sort-cabang d-none d-sm-block">-</td>
                                     @endif

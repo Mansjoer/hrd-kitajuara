@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/employees/update/{slug}', 'update')->name('app-employees-update');
         Route::post('/employees/delete', 'delete')->name('app-employees-delete');
         Route::get('/employees/download-format', 'downloadFormat')->name('app-download-format-employees');
+    });
+
+    Route::controller(AttendanceController::class)->group(function () {
+        Route::get('/attendances', 'index')->name('app-attendance');
     });
 
     Route::controller(ProfileController::class)->group(function () {

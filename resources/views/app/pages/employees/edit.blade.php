@@ -324,6 +324,15 @@
                             <div class="row row-cards">
                                 <div class="col-lg-12">
                                     <div class="mb-3">
+                                        <label class="form-label">Status Karyawan</label>
+                                        <select name="isStatus" type="text" class="form-select tomSelect">
+                                            <option value="1" {{ $user->status == 1 ? 'selected' : '' }}>Aktif</option>
+                                            <option value="0" {{ $user->status == 0 ? 'selected' : '' }}>Tidak Aktif</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="mb-3">
                                         <label class="form-label">Sebagai Administrator?</label>
                                         <select name="isAdmin" type="text" class="form-select tomSelect">
                                             <option value="1" {{ $user->isAdmin == 1 ? 'selected' : '' }}>Ya</option>

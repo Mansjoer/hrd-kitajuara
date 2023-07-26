@@ -137,6 +137,7 @@
         </div>
     </div>
     @include('app.includes.script')
+    <script></script>
 </body>
 
 </html>

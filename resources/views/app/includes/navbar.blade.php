@@ -13,8 +13,8 @@
                             </span>
                         </a>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);">
+                    <li class="nav-item {{ Request::is('attendances*') ? 'active' : '' }}">
+                        <a class="nav-link " href="{{ route('app-attendance') }}">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
                                 <i class="ti ti-calendar-stats icon"></i>
                             </span>
@@ -22,7 +22,7 @@
                                 Kehadiran
                             </span>
                         </a>
-                    </li> --}}
+                    </li>
                     <li class="nav-item {{ (Request::is('employees*') ? 'active' : '' || Request::is('users*')) ? 'active' : '' }}">
                         <a class="nav-link" href="{{ route('app-employees') }}">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
@@ -86,6 +86,16 @@
                         </li>
                     @endif --}}
                 </ul>
+                {{-- <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
+                    <a class="nav-link">
+                        <span class="nav-link-icon d-md-none d-lg-inline-block">
+                            <i class="ti ti-clock icon"></i>
+                        </span>
+                        <span class="nav-link-title" id="#date">
+
+                        </span>
+                    </a>
+                </div> --}}
                 {{-- <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
                     <form action="" method="GET" autocomplete="off" novalidate spellcheck="false" autocomplete="off">
                         <div class="input-icon">
