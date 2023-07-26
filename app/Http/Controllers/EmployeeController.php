@@ -188,6 +188,34 @@ class EmployeeController extends Controller
         return redirect()->route('app-employees');
     }
 
+    public function postResetPassword(Request $request)
+    {
+        $user = User::where('slug', $request->slug)->first();
+        $user->update([
+            'password' => bcrypt(123456)
+        ]);
+        $response = [
+            'status' => 200,
+            'success' => true,
+            'data' => $user
+        ];
+        return response()->json($response);
+    }
+
+    public function postResetPin(Request $request)
+    {
+        $user = User::where('slug', $request->slug)->first();
+        $user->employee->update([
+            'pin' => mt_rand(1111, 9999)
+        ]);
+        $response = [
+            'status' => 200,
+            'success' => true,
+            'data' => $user
+        ];
+        return response()->json($response);
+    }
+
     public function delete(Request $request)
     {
         $users = User::where('nik', $request->nik)->first();

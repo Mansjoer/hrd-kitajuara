@@ -52,15 +52,6 @@
                         <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
                     </div>
                     <h2 class="mb-4">Kata Sandi</h2>
-                    <h3 class="card-title mb-3">Setel Ulang</h3>
-                    <div class="row g-3 mb-3">
-                        <div class="col-lg">
-                            <a class="btn" id="buttonResetPassword" data-slug="{{ Auth::user()->slug }}">
-                                Kembalikan ke awal
-                            </a>
-                        </div>
-                    </div>
-                    <div class="border mb-3"></div>
                     <h3 class="card-title mb-3">Ubah Kata Sandi</h3>
                     <div class="row g-3 mb-3">
                         <div class="col-lg">
@@ -132,7 +123,7 @@
             } else {
                 $.ajax({
                     type: "POST",
-                    url: "{{ route('app-post-change-password') }}",
+                    url: "{{ route('app-users-profile-post-change-password') }}",
                     data: {
                         slug: slug,
                         password: newPassword

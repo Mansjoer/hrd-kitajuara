@@ -44,6 +44,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/employees/update/{slug}', 'update')->name('app-employees-update');
         Route::post('/employees/delete', 'delete')->name('app-employees-delete');
         Route::get('/employees/download-format', 'downloadFormat')->name('app-download-format-employees');
+        Route::post('/employees/post-reset-password', 'postResetPassword')->name('app-post-reset-password');
+        Route::post('/employees/post-reset-pin', 'postResetPin')->name('app-post-reset-pin');
     });
 
     Route::controller(AttendanceController::class)->group(function () {
@@ -59,9 +61,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/users/profile/{slug}/attendance', 'attendance')->name('app-users-profile-attendance');
         Route::get('/users/profile/{slug}/change-password', 'changePassword')->name('app-users-profile-change-password');
         Route::post('/users/profile/{slug}/change-photo', 'profileChangePhoto')->name('app-users-profile-change-photo');
-
-        Route::post('/post/change-password', 'postChangePassword')->name('app-post-change-password');
-        Route::post('/post/reset-password', 'postResetPassword')->name('app-post-reset-password');
+        Route::post('/users/profile/post-change-password', 'postChangePassword')->name('app-users-profile-post-change-password');
     });
 
     Route::controller(StructuralController::class)->group(function () {

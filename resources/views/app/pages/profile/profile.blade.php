@@ -40,10 +40,6 @@
                         <a href="{{ route('app-users-profile-attendance', $user->slug) }}" class="list-group-item list-group-item-action">Kehadiran</a>
                         <a href="javascript:void(0);" class="list-group-item list-group-item-action">Pengajuan</a>
                     </div>
-                    <h4 class="subheader mt-4">Privasi</h4>
-                    <div class="list-group list-group-transparent">
-                        <a href="{{ route('app-users-profile-change-password', $user->slug) }}" class="list-group-item list-group-item-action">Kata Sandi</a>
-                    </div>
                 </div>
             </div>
             <div class="col d-flex flex-column">
