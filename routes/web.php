@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AttendanceController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -76,5 +77,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/export/employees/excel', 'exportEmployeesExcel')->name('app-export-excel-employees');
         Route::get('/export/employees/csv', 'exportEmployeesCsv')->name('app-export-csv-employees');
         Route::post('/import/employees', 'importEmployees')->name('app-import-employees');
+    });
+
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('/admin', 'index')->name('app-admin');
+        Route::post('/admin/site-settings/post-update-settings', 'postSiteSetting')->name('app-admin-post-update-settings');
+        Route::post('/admin/change-log/add', 'addChangeLog')->name('app-admin-change-log-add');
+        Route::post('/admin/change-log/delete', 'deleteChangeLog')->name('app-admin-change-log-delete');
     });
 });

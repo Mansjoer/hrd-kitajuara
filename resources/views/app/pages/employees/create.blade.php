@@ -31,7 +31,7 @@
 @endsection
 
 @section('content')
-    <form action="{{ route('app-employees-post-create') }}" method="POST" spellcheck="false" autocomplete="off" id="formKaryawan">
+    <form action="{{ route('app-employees-post-create') }}" method="POST" spellcheck="false" autocomplete="off" id="formKaryawan" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row">
             <div class="col-lg-8">
@@ -302,54 +302,56 @@
                 </div>
             </div>
             <div class="col-lg-4 ">
-                <div class="card mb-3 placeholder-glow">
-                    <div class="card-body">
-                        <h3 class="card-title">Lainnya <span class="form-help " data-bs-toggle="popover" data-bs-placement="top" data-bs-html="true" data-bs-content="<p>Abaikan jika kamu tidak tahu apa yang akan kamu lakukan.</p>">?</span></h3>
-                        @if (Auth::user()->isAdmin == 1)
-                            <div class="row row-cards">
-                                {{-- <div class="col-lg-12">
-                                    <div class="mb-3">
-                                        <label class="form-label">Role</label>
-                                        <select name="role" type="text" class="form-select tomSelect" placeholder="Pilih role...">
-                                            <option value=""></option>
-                                            @foreach ($roles->sortBy('name') as $role)
-                                                <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div> --}}
-                                <div class="col-lg-12">
-                                    <div class="mb-3">
-                                        <label class="form-label">Sebagai Administrator?</label>
-                                        <select name="isAdmin" type="text" class="form-select tomSelect">
-                                            <option value="1">Ya</option>
-                                            <option value="0" selected>Tidak</option>
-                                        </select>
+                <div class="sticky-top" style="top: 16px;">
+                    <div class="card mb-3 placeholder-glow">
+                        <div class="card-body">
+                            <h3 class="card-title">Lainnya <span class="form-help " data-bs-toggle="popover" data-bs-placement="top" data-bs-html="true" data-bs-content="<p>Abaikan jika kamu tidak tahu apa yang akan kamu lakukan.</p>">?</span></h3>
+                            @if (Auth::user()->isAdmin == 1)
+                                <div class="row row-cards">
+                                    {{-- <div class="col-lg-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Role</label>
+                                            <select name="role" type="text" class="form-select tomSelect" placeholder="Pilih role...">
+                                                <option value=""></option>
+                                                @foreach ($roles->sortBy('name') as $role)
+                                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div> --}}
+                                    <div class="col-lg-12">
+                                        <div class="mb-3">
+                                            <label class="form-label">Sebagai Administrator?</label>
+                                            <select name="isAdmin" type="text" class="form-select tomSelect">
+                                                <option value="1">Ya</option>
+                                                <option value="0" selected>Tidak</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @else
-                            <div class="row row-cards text-center mt-3">
-                                <div class="empty-img">
-                                    <img src="https://hrd.kitajuara.test/app/assets/static/illustrations/Security-cuate.svg" height="128" alt="">
+                            @else
+                                <div class="row row-cards text-center mt-3">
+                                    <div class="empty-img">
+                                        <img src="https://hrd.kitajuara.test/app/assets/static/illustrations/Security-cuate.svg" height="128" alt="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row row-cards text-center ">
-                                <p class="empty-title">
-                                    Terkunci
-                                </p>
-                                <p class="empty-subtitle text-muted">
-                                    Sepertinya kamu bukan admin?
-                                </p>
-                            </div>
-                        @endif
+                                <div class="row row-cards text-center ">
+                                    <p class="empty-title">
+                                        Terkunci
+                                    </p>
+                                    <p class="empty-subtitle text-muted">
+                                        Sepertinya kamu bukan admin?
+                                    </p>
+                                </div>
+                            @endif
+                        </div>
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-body text-end">
-                        <div class="d-flex">
-                            <button type="reset" class="btn btn-outline-danger">Batal</button>
-                            <button type="submit" class="btn btn-primary ms-auto">Simpan</button>
+                    <div class="card">
+                        <div class="card-body text-end">
+                            <div class="d-flex">
+                                <button type="reset" class="btn btn-outline-danger">Batal</button>
+                                <button type="submit" class="btn btn-primary ms-auto">Simpan</button>
+                            </div>
                         </div>
                     </div>
                 </div>

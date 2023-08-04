@@ -53,38 +53,18 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="javascript:void(0);">
-                            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <i class="ti ti-adjustments-alt icon"></i>
-                            </span>
-                            <span class="nav-link-title">
-                                Pengaturan
-                            </span>
-                        </a>
-                    </li>
-                    {{-- @if (Auth::user()->isAdmin == 1)
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                    @if (Auth::check() && Auth::user()->role_id == 2)
+                        <li class="nav-item {{ Request::is('admin*') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('app-admin') }}">
                                 <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                    <i class="ti ti-settings-2 icon"></i>
+                                    <i class="ti ti-shield-chevron icon"></i>
                                 </span>
                                 <span class="nav-link-title">
                                     Admin
                                 </span>
                             </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#" rel="noopener">
-                                    <i class="ti ti-shield-cog icon icon-inline me-1"></i>
-                                    Roles
-                                </a>
-                                <a class="dropdown-item" href="#" rel="noopener">
-                                    <i class="ti ti-user-cog icon icon-inline me-1"></i>
-                                    Users
-                                </a>
-                            </div>
                         </li>
-                    @endif --}}
+                    @endif
                 </ul>
                 {{-- <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
                     <a class="nav-link">

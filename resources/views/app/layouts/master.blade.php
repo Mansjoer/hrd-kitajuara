@@ -131,6 +131,7 @@
                         </div>
                         @include('app.modals.auth')
                     @endif
+                    @yield('modals')
                 </div>
             </div>
             {{-- @include('app.includes.footer') --}}
